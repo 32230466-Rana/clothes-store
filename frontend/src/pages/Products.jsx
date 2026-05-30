@@ -1,18 +1,20 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import ProductCard from "../components/ProductCard";
 
 import collectionImg from "../assets/collection.png";
-import girlPink from "../assets/girlpink.jpeg";
-import blueDress from "../assets/dressbluewomen.jpeg";
-import blueTshirt from "../assets/boybluetshirtt.jpeg";
-import brownTshirt from "../assets/mentshirtbrown.jpeg";
-import pinkBag from "../assets/bagpink.jpeg";
-import blackBag from "../assets/blackbag.jpeg";
+
+import pinkDress from "../assets/pink.webp";
+import blueDress from "../assets/baby-blue-hijab-evening-dress-22.jpg";
+import blueTshirt from "../assets/bluekid.png";
+import brownTshirt from "../assets/brown.webp";
+import pinkBag from "../assets/pink1.webp";
+import blackBag from "../assets/blackbag.webp";
 
 const products = [
   {
-    image: girlPink,
+    image: pinkDress,
     badge: "-20%",
     title: "Pink Dress",
     subtitle: "Season Pick",
@@ -21,6 +23,7 @@ const products = [
     oldPrice: "$49.99",
     colorClass: "swatch-pink",
     sizes: ["S", "M", "L", "XL"],
+    category: "Women",
   },
   {
     image: blueDress,
@@ -32,6 +35,7 @@ const products = [
     oldPrice: "",
     colorClass: "swatch-blue",
     sizes: ["S", "M", "L", "XL"],
+    category: "Women",
   },
   {
     image: blueTshirt,
@@ -43,6 +47,7 @@ const products = [
     oldPrice: "",
     colorClass: "swatch-deep-blue",
     sizes: ["S", "M", "L", "XL"],
+    category: "Kids",
   },
   {
     image: brownTshirt,
@@ -54,6 +59,7 @@ const products = [
     oldPrice: "",
     colorClass: "swatch-brown",
     sizes: ["S", "M", "L", "XL"],
+    category: "Men",
   },
   {
     image: pinkBag,
@@ -65,6 +71,7 @@ const products = [
     oldPrice: "",
     colorClass: "swatch-bag-pink",
     sizes: ["Mini", "Small", "Medium"],
+    category: "Handbags",
   },
   {
     image: blackBag,
@@ -76,6 +83,7 @@ const products = [
     oldPrice: "",
     colorClass: "swatch-black",
     sizes: ["Mini", "Small", "Medium"],
+    category: "Handbags",
   },
 ];
 
@@ -99,6 +107,41 @@ const features = [
 ];
 
 function Products({ addToCart }) {
+  const [searchText, setSearchText] = useState("");
+const [selectedCategory, setSelectedCategory] = useState("All");
+const [formMessage, setFormMessage] = useState("");
+const [formMessageType, setFormMessageType] = useState("");
+const [showDetails, setShowDetails] = useState(false);
+
+  const filteredProducts = products.filter((product) => {
+    const matchesSearch = product.title
+      .toLowerCase()
+      .includes(searchText.toLowerCase());
+
+    const matchesCategory =
+      selectedCategory === "All" || product.category === selectedCategory;
+
+    return matchesSearch && matchesCategory;
+  });
+
+  const handleStyleRequestSubmit = (event) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const userName = form.elements.userName.value.trim();
+    const userEmail = form.elements.userEmail.value.trim();
+
+    if (userName === "" || userEmail === "") {
+      setFormMessage("Please fill your name and email.");
+      setFormMessageType("error");
+      return;
+    }
+
+    setFormMessage("Your style request was saved successfully.");
+    setFormMessageType("success");
+    form.reset();
+  };
+
   return (
     <div className="collection-page old-collection-page">
       <div className="top-bar">Spring Sale is Here! Enjoy up to 60% off</div>
@@ -160,6 +203,7 @@ function Products({ addToCart }) {
                   Dresses
                 </Link>
               </div>
+
               <div className="col">
                 <Link
                   to="/products"
@@ -168,6 +212,7 @@ function Products({ addToCart }) {
                   Tops
                 </Link>
               </div>
+
               <div className="col">
                 <Link
                   to="/products"
@@ -176,6 +221,7 @@ function Products({ addToCart }) {
                   Kids Wear
                 </Link>
               </div>
+
               <div className="col">
                 <Link
                   to="/products"
@@ -194,16 +240,19 @@ function Products({ addToCart }) {
                   Women
                 </Link>
               </li>
+
               <li className="nav-item">
                 <Link to="/products" className="nav-link category-pill">
                   Men
                 </Link>
               </li>
+
               <li className="nav-item">
                 <Link to="/products" className="nav-link category-pill">
                   Kids
                 </Link>
               </li>
+
               <li className="nav-item">
                 <Link to="/products" className="nav-link category-pill">
                   Handbags
@@ -248,7 +297,10 @@ function Products({ addToCart }) {
           <section className="bootstrap-slide-box mt-4">
             <h3>Season Highlights</h3>
 
-            <ul className="nav nav-pills nav-justified season-pills" role="tablist">
+            <ul
+              className="nav nav-pills nav-justified season-pills"
+              role="tablist"
+            >
               <li className="nav-item" role="presentation">
                 <button
                   className="nav-link active"
@@ -418,9 +470,11 @@ function Products({ addToCart }) {
                       <div className="col-6">
                         <span className="nested-grid-chip">Kids</span>
                       </div>
+
                       <div className="col-6">
                         <span className="nested-grid-chip">Bags</span>
                       </div>
+
                       <div className="col-12">
                         <span className="nested-grid-chip">
                           Matching pieces
@@ -436,9 +490,11 @@ function Products({ addToCart }) {
                       <div className="col-4">
                         <span className="nested-grid-chip">S</span>
                       </div>
+
                       <div className="col-4">
                         <span className="nested-grid-chip">M</span>
                       </div>
+
                       <div className="col-4">
                         <span className="nested-grid-chip">L</span>
                       </div>
@@ -458,6 +514,7 @@ function Products({ addToCart }) {
             `}</style>
 
             <h3 id="cssSlideTitle">Store Style Notes</h3>
+
             <p
               className="internal-slide-style inline-slide-style"
               style={{ borderStyle: "dashed" }}
@@ -467,6 +524,7 @@ function Products({ addToCart }) {
             </p>
 
             <p className="css-font-demo">Fashion Store Style Preview</p>
+
             <p className="css-spacing-demo">
               Soft colors with letter spacing and word spacing.
             </p>
@@ -480,17 +538,20 @@ function Products({ addToCart }) {
 
             <table className="table table-bordered table-striped css-slide-table">
               <caption>Collection availability</caption>
+
               <tbody>
                 <tr>
                   <td>Women</td>
                   <td>Dress</td>
                   <td>Available</td>
                 </tr>
+
                 <tr>
                   <td>Men</td>
                   <td>T-Shirt</td>
                   <td></td>
                 </tr>
+
                 <tr>
                   <td>Bags</td>
                   <td>Handbag</td>
@@ -509,13 +570,41 @@ function Products({ addToCart }) {
         <div className="container">
           <h2 className="section-title">Products</h2>
 
+          <div className="product-filter-box">
+            <input
+              type="text"
+              className="form-control product-search-input"
+              placeholder="Search products..."
+              value={searchText}
+              onChange={(event) => setSearchText(event.target.value)}
+            />
+
+            <select
+              className="form-select product-category-select"
+              value={selectedCategory}
+              onChange={(event) => setSelectedCategory(event.target.value)}
+            >
+              <option value="All">All Categories</option>
+              <option value="Women">Women</option>
+              <option value="Men">Men</option>
+              <option value="Kids">Kids</option>
+              <option value="Handbags">Handbags</option>
+            </select>
+          </div>
+
           <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
-            {products.map((product) => (
+            {filteredProducts.map((product) => (
               <div className="col" key={product.title}>
                 <ProductCard product={product} onAdd={addToCart} />
               </div>
             ))}
           </div>
+
+          {filteredProducts.length === 0 && (
+            <p className="no-products-message">
+              No products found. Try another search or category.
+            </p>
+          )}
         </div>
       </section>
 
@@ -624,6 +713,7 @@ Do not bleach`}</pre>
                         <td>Chest 94</td>
                         <td>Chest 100</td>
                       </tr>
+
                       <tr>
                         <td>Men</td>
                         <td>Chest 92</td>
@@ -631,6 +721,7 @@ Do not bleach`}</pre>
                         <td>Chest 104</td>
                         <td>Chest 110</td>
                       </tr>
+
                       <tr>
                         <td>Kids</td>
                         <td>2-3Y</td>
@@ -638,6 +729,7 @@ Do not bleach`}</pre>
                         <td>6-7Y</td>
                         <td>8-9Y</td>
                       </tr>
+
                       <tr className="bottom-align-row">
                         <td>Bags</td>
                         <td>Mini</td>
@@ -676,6 +768,7 @@ Do not bleach`}</pre>
                       Size Guide
                     </button>
                   </li>
+
                   <li className="nav-item" role="presentation">
                     <button
                       className="nav-link"
@@ -690,6 +783,7 @@ Do not bleach`}</pre>
                       Delivery
                     </button>
                   </li>
+
                   <li className="nav-item" role="presentation">
                     <button
                       className="nav-link"
@@ -704,6 +798,7 @@ Do not bleach`}</pre>
                       Returns
                     </button>
                   </li>
+
                   <li className="nav-item dropdown" role="presentation">
                     <button
                       className="nav-link dropdown-toggle"
@@ -804,71 +899,44 @@ Do not bleach`}</pre>
                   </div>
                 </div>
 
-                <button
-                  type="button"
-                  className="link-btn view-size-help-btn btn btn-outline-primary mt-3"
-                  data-bs-toggle="modal"
-                  data-bs-target="#sizeHelpModal"
-                >
-                  View Size Help
-                </button>
+             <div className="details-actions">
+  <Link
+    to="/size-guide"
+    className="link-btn view-size-help-btn btn btn-outline-primary mt-3"
+  >
+    View Size Help
+  </Link>
 
-                <dl className="service-list">
-                  <dt id="delivery-info">Delivery</dt>
-                  <dd>2 to 5 business days in most areas.</dd>
+  <button
+    type="button"
+    className="link-btn btn btn-outline-primary mt-3"
+    onClick={() => setShowDetails(!showDetails)}
+  >
+    {showDetails ? "Hide Details" : "Show Details"}
+  </button>
+</div>
 
-                  <dt id="returns-info">Returns</dt>
-                  <dd>
-                    Available for size replacement when stock is available.
-                  </dd>
+{showDetails && (
+  <dl className="service-list show-hide-details-box">
+    <dt id="delivery-info">Delivery</dt>
+    <dd>2 to 5 business days in most areas.</dd>
 
-                  <dt>Best Use</dt>
-                  <dd>
-                    Daily wear, weekend styling, and simple matching looks.
-                  </dd>
-                </dl>
+    <dt id="returns-info">Returns</dt>
+    <dd>
+      Available for size replacement when stock is available.
+    </dd>
 
-                <div
-                  className="modal fade"
-                  id="sizeHelpModal"
-                  tabIndex="-1"
-                  aria-labelledby="sizeHelpModalLabel"
-                  aria-hidden="true"
-                >
-                  <div className="modal-dialog modal-dialog-centered">
-                    <div className="modal-content">
-                      <div className="modal-header">
-                        <h5 className="modal-title" id="sizeHelpModalLabel">
-                          Size Help
-                        </h5>
-                        <button
-                          type="button"
-                          className="btn-close"
-                          data-bs-dismiss="modal"
-                          aria-label="Close"
-                        ></button>
-                      </div>
+    <dt>Best Use</dt>
+    <dd>
+      Daily wear, weekend styling, and simple matching looks.
+    </dd>
 
-                      <div className="modal-body">
-                        Compare your measurements with the chart and choose the
-                        larger size if you are between two options.
-                      </div>
-
-                      <div className="modal-footer">
-                        <button
-                          type="button"
-                          className="btn btn-secondary"
-                          data-bs-dismiss="modal"
-                        >
-                          Close
-                        </button>
-                        <Link to="/size-guide" className="btn btn-primary">
-                          Open Size Guide
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+    <dt>Care Tips</dt>
+    <dd>
+      Wash cold, dry flat, and do not bleach.
+    </dd>
+  </dl>
+)}
               </div>
             </article>
           </div>
@@ -891,12 +959,13 @@ Do not bleach`}</pre>
                 <h3>Style Request Form</h3>
                 <p>Send your size and category preference.</p>
 
-                <form onSubmit={(event) => event.preventDefault()}>
+                <form onSubmit={handleStyleRequestSubmit}>
                   <div className="row">
                     <div className="col-sm-6 mb-3">
                       <label htmlFor="userId" className="form-label-text">
                         ID
                       </label>
+
                       <input
                         type="text"
                         id="userId"
@@ -911,6 +980,7 @@ Do not bleach`}</pre>
                       <label htmlFor="userName" className="form-label-text">
                         Name
                       </label>
+
                       <input
                         type="text"
                         id="userName"
@@ -923,6 +993,7 @@ Do not bleach`}</pre>
                       <label htmlFor="previewName" className="form-label-text">
                         Delivery Name
                       </label>
+
                       <input
                         type="text"
                         id="previewName"
@@ -936,6 +1007,7 @@ Do not bleach`}</pre>
                       <label htmlFor="userEmail" className="form-label-text">
                         Email
                       </label>
+
                       <input
                         type="email"
                         id="userEmail"
@@ -948,6 +1020,7 @@ Do not bleach`}</pre>
                       <label htmlFor="backupEmail" className="form-label-text">
                         Backup Email
                       </label>
+
                       <input
                         type="email"
                         id="backupEmail"
@@ -960,6 +1033,7 @@ Do not bleach`}</pre>
                       <label htmlFor="userPassword" className="form-label-text">
                         Password
                       </label>
+
                       <input
                         type="password"
                         id="userPassword"
@@ -972,6 +1046,7 @@ Do not bleach`}</pre>
                       <label htmlFor="userPhone" className="form-label-text">
                         Phone
                       </label>
+
                       <input
                         type="number"
                         id="userPhone"
@@ -983,6 +1058,7 @@ Do not bleach`}</pre>
 
                   <div className="option-demo-line">
                     <b>Preferred Category:</b>
+
                     <label>
                       <input
                         type="radio"
@@ -992,9 +1068,11 @@ Do not bleach`}</pre>
                       />{" "}
                       Women
                     </label>
+
                     <label>
                       <input type="radio" name="mainCategory" value="Men" /> Men
                     </label>
+
                     <label>
                       <input type="radio" name="mainCategory" value="Kids" />{" "}
                       Kids
@@ -1003,17 +1081,21 @@ Do not bleach`}</pre>
 
                   <div className="option-demo-line">
                     <b>Interested In:</b>
+
                     <label>
                       <input type="checkbox" name="itemDress" value="Dress" />{" "}
                       Dress
                     </label>
+
                     <label>
                       <input type="checkbox" name="itemBag" value="Bag" /> Bag
                     </label>
+
                     <label>
                       <input type="checkbox" name="itemJeans" value="Jeans" />{" "}
                       Jeans
                     </label>
+
                     <label>
                       <input type="checkbox" name="itemBlouse" value="Blouse" />{" "}
                       Blouse
@@ -1025,6 +1107,7 @@ Do not bleach`}</pre>
                       <label htmlFor="ageChoice" className="form-label-text">
                         Age Group
                       </label>
+
                       <select
                         name="ageChoice"
                         id="ageChoice"
@@ -1042,6 +1125,7 @@ Do not bleach`}</pre>
                       <label htmlFor="visitDate" className="form-label-text">
                         Preferred Date
                       </label>
+
                       <input
                         type="date"
                         id="visitDate"
@@ -1054,6 +1138,7 @@ Do not bleach`}</pre>
                       <label htmlFor="visitTime" className="form-label-text">
                         Preferred Time
                       </label>
+
                       <input
                         type="time"
                         id="visitTime"
@@ -1067,6 +1152,7 @@ Do not bleach`}</pre>
                     <label htmlFor="comments" className="form-label-text">
                       Comments
                     </label>
+
                     <textarea
                       id="comments"
                       name="comments"
@@ -1080,12 +1166,18 @@ Do not bleach`}</pre>
                     <button type="submit" className="link-btn btn btn-primary">
                       Confirm
                     </button>
+
                     <button
                       type="reset"
                       className="link-btn secondary btn btn-secondary"
+                      onClick={() => {
+                        setFormMessage("");
+                        setFormMessageType("");
+                      }}
                     >
                       Reset
                     </button>
+
                     <Link
                       to="/contact"
                       className="link-btn btn btn-outline-primary"
@@ -1093,6 +1185,12 @@ Do not bleach`}</pre>
                       Register
                     </Link>
                   </div>
+
+                  {formMessage && (
+                    <p className={`form-validation-message ${formMessageType}`}>
+                      {formMessage}
+                    </p>
+                  )}
                 </form>
               </div>
             </div>
@@ -1118,6 +1216,7 @@ Do not bleach`}</pre>
                       <li>Elegant handbags</li>
                     </ul>
                   </li>
+
                   <li>Watch a boutique-style collection video.</li>
                   <li>See layout blocks used for product presentation.</li>
                   <li>Move over the image to see a hover effect.</li>
@@ -1129,7 +1228,7 @@ Do not bleach`}</pre>
 
                 <p className="text-center">
                   <img
-                    src={girlPink}
+                    src={pinkDress}
                     alt="Hover example"
                     width="150"
                     height="150"
@@ -1142,9 +1241,11 @@ Do not bleach`}</pre>
                   <summary>
                     <b>Preview Media</b>
                   </summary>
+
                   <p>
                     <small>Local collection image preview</small>
                   </p>
+
                   <video
                     width="320"
                     height="240"
@@ -1153,6 +1254,7 @@ Do not bleach`}</pre>
                   >
                     Your browser does not support the video tag.
                   </video>
+
                   <img
                     src={blueDress}
                     alt="Blue dress preview"
@@ -1310,6 +1412,7 @@ Do not bleach`}</pre>
                 <td>Pack</td>
                 <td>Send</td>
               </tr>
+
               <tr>
                 <td>Check</td>
                 <td></td>
@@ -1319,12 +1422,14 @@ Do not bleach`}</pre>
           </table>
         </div>
       </section>
+
       <Link
         to="/support"
         className="floating-help-btn fixed-bottom btn btn-outline-primary"
       >
         Need Help?
       </Link>
+
       <Footer />
     </div>
   );

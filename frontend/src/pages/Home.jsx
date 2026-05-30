@@ -1,13 +1,14 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 
 import collectionImg from "../assets/collection.png";
-import girlPink from "../assets/girlpink.jpeg";
-import blueDress from "../assets/dressbluewomen.jpeg";
-import blueTshirt from "../assets/boybluetshirtt.jpeg";
-import brownTshirt from "../assets/mentshirtbrown.jpeg";
-import pinkBag from "../assets/bagpink.jpeg";
-import blackBag from "../assets/blackbag.jpeg";
+import blueDress from "../assets/baby-blue-hijab-evening-dress-22.jpg";
+import brownTshirt from "../assets/brown.webp";
+import blueTshirt from "../assets/bluekid.png";
+import blackBag from "../assets/blackbag.webp";
+import pinkBag from "../assets/pink1.webp";
+import pinkDress from "../assets/pink.webp";
 
 const carouselItems = [
   {
@@ -18,7 +19,7 @@ const carouselItems = [
     text: "Clean designs and comfortable style.",
   },
   {
-    image: girlPink,
+    image: pinkDress,
     alt: "Pink outfit",
     label: "Spring Discount",
     title: "Fresh styles made for you",
@@ -74,14 +75,54 @@ const deals = [
     text: "Beautiful fashion for every day.",
   },
   {
-    image: girlPink,
+    image: pinkDress,
     alt: "Pink outfit deal",
     title: "New Arrivals",
     text: "Soft pieces with simple styling.",
   },
 ];
+const initialFeedbacks = [
+  {
+    name: "Sara",
+    rating: "5",
+    message: "Beautiful collection and very clear shopping page.",
+  },
+  {
+    name: "Maya",
+    rating: "4",
+    message: "The products are easy to browse and the design feels soft.",
+  },
+];
 
 function Home() {
+  const [feedbacks, setFeedbacks] = useState(initialFeedbacks);
+  const [feedbackMessage, setFeedbackMessage] = useState("");
+
+  const handleFeedbackSubmit = (event) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const name = form.elements.feedbackName.value.trim();
+    const email = form.elements.feedbackEmail.value.trim();
+    const message = form.elements.feedbackText.value.trim();
+    const rating = form.elements.rating.value;
+
+    if (name === "" || email === "" || message === "" || rating === "") {
+      setFeedbackMessage("Please fill your name, email, rating, and message.");
+      return;
+    }
+
+    const newFeedback = {
+      name: name,
+      rating: rating,
+      message: message,
+    };
+
+    setFeedbacks([newFeedback, ...feedbacks]);
+    setFeedbackMessage("Thank you! Your feedback was added.");
+    form.reset();
+  };
+
   return (
     <>
       <main className="home-page">
@@ -331,23 +372,34 @@ function Home() {
             </div>
           </div>
         </section>
-
         <section className="section-space feedback-section">
           <div className="container">
             <h2 className="section-title">Feedback</h2>
 
-            <form
-              className="feedback-form"
-              onSubmit={(event) => event.preventDefault()}
-            >
+            <div className="feedback-list mb-4">
+              {feedbacks.map((item, index) => (
+                <div className="feedback-card" key={index}>
+                  <div className="feedback-card-top">
+                    <h5>{item.name}</h5>
+                    <span>{"★".repeat(Number(item.rating))}</span>
+                  </div>
+
+                  <p>{item.message}</p>
+                </div>
+              ))}
+            </div>
+
+            <form className="feedback-form" onSubmit={handleFeedbackSubmit}>
               <input
                 type="text"
+                name="feedbackName"
                 className="form-control field-control mb-3"
                 placeholder="Your Name"
               />
 
               <input
                 type="email"
+                name="feedbackEmail"
                 className="form-control field-control mb-3"
                 placeholder="Your Email"
               />
@@ -356,24 +408,25 @@ function Home() {
                 <p className="rating-title">Rate Us</p>
 
                 <div className="rating-stars">
-                  <input type="radio" id="star5" name="rating" />
+                  <input type="radio" id="star5" name="rating" value="5" />
                   <label htmlFor="star5">★</label>
 
-                  <input type="radio" id="star4" name="rating" />
+                  <input type="radio" id="star4" name="rating" value="4" />
                   <label htmlFor="star4">★</label>
 
-                  <input type="radio" id="star3" name="rating" />
+                  <input type="radio" id="star3" name="rating" value="3" />
                   <label htmlFor="star3">★</label>
 
-                  <input type="radio" id="star2" name="rating" />
+                  <input type="radio" id="star2" name="rating" value="2" />
                   <label htmlFor="star2">★</label>
 
-                  <input type="radio" id="star1" name="rating" />
+                  <input type="radio" id="star1" name="rating" value="1" />
                   <label htmlFor="star1">★</label>
                 </div>
               </div>
 
               <textarea
+                name="feedbackText"
                 className="form-control field-control mb-3"
                 rows="4"
                 placeholder="Your Message"
@@ -382,9 +435,14 @@ function Home() {
               <button type="submit" className="feedback-btn btn btn-primary">
                 Send Feedback
               </button>
+
+              {feedbackMessage && (
+                <p className="feedback-message">{feedbackMessage}</p>
+              )}
             </form>
           </div>
         </section>
+      
       </main>
 
       <Footer />
@@ -393,3 +451,5 @@ function Home() {
 }
 
 export default Home;
+
+

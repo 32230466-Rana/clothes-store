@@ -1,10 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 
 const links = [
-  { to: "/", label: "Home", shortLabel: "Home" },
-  { to: "/about", label: "About Us", shortLabel: "About" },
-  { to: "/products", label: "Collection", shortLabel: "Shop" },
-  { to: "/contact", label: "Contact", shortLabel: "Call" },
+  { to: "/", label: "Home" },
+  { to: "/about", label: "About Us" },
+  { to: "/products", label: "Collection" },
+  { to: "/contact", label: "Contact" },
 ];
 
 const customerLinks = [
@@ -24,7 +24,7 @@ function Navbar({ cartCount = 0 }) {
           className="navbar navbar-expand-lg navbar-light store-navbar"
           aria-label="Main navigation"
         >
-          <div className="container-fluid">
+          <div className="container-fluid header-inner">
             <Link to="/" className="navbar-brand brand store-brand">
               <span className="brand-mark" aria-hidden="true">
                 FS
@@ -59,8 +59,7 @@ function Navbar({ cartCount = 0 }) {
                           : "nav-link nav-item-link"
                       }
                     >
-                      <span className="nav-label-full">{item.label}</span>
-                      <span className="nav-label-short">{item.shortLabel}</span>
+                      {item.label}
                     </NavLink>
                   </li>
                 ))}
@@ -72,8 +71,7 @@ function Navbar({ cartCount = 0 }) {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    <span className="care-label-full">Customer Care</span>
-                    <span className="care-label-short">Care</span>
+                    Customer Care
                   </button>
 
                   <ul className="dropdown-menu store-dropdown-menu">
@@ -82,9 +80,7 @@ function Navbar({ cartCount = 0 }) {
                         <NavLink
                           to={item.to}
                           className={({ isActive }) =>
-                            isActive
-                              ? "dropdown-item active"
-                              : "dropdown-item"
+                            isActive ? "dropdown-item active" : "dropdown-item"
                           }
                         >
                           {item.label}
@@ -93,38 +89,24 @@ function Navbar({ cartCount = 0 }) {
                     ))}
                   </ul>
                 </li>
-
-                <li className="nav-item store-nav-item store-search-item">
-                  <form className="d-flex store-search" role="search">
-                    <input
-                      className="form-control search-input"
-                      type="search"
-                      placeholder="Search..."
-                      aria-label="Search"
-                    />
-                  </form>
-                </li>
-
-                <li className="nav-item store-nav-item store-cart-nav-item">
-                  <Link
-                    to="/cart"
-                    className="cart-link btn btn-outline-primary"
-                    aria-label="Open cart"
-                  >
-                    <span className="cart-label-full">Cart</span>{" "}
-                    <span>{cartCount}</span>
-                  </Link>
-                </li>
               </ul>
 
-              <div className="nav-actions store-actions store-cart-desktop">
+              <div className="header-right">
+                <form className="d-flex store-search" role="search">
+                  <input
+                    className="form-control search-input"
+                    type="search"
+                    placeholder="Search..."
+                    aria-label="Search"
+                  />
+                </form>
+
                 <Link
                   to="/cart"
                   className="cart-link btn btn-outline-primary"
                   aria-label="Open cart"
                 >
-                  <span className="cart-label-full">Cart</span>{" "}
-                  <span>{cartCount}</span>
+                  Cart <span>{cartCount}</span>
                 </Link>
               </div>
             </div>

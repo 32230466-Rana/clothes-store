@@ -2,7 +2,11 @@ import Footer from "../components/Footer";
 import AboutCard from "../components/AboutCard";
 import ChooseBox from "../components/ChooseBox";
 import TeamMemberCard from "../components/TeamMemberCard";
-import collectionImg from "../assets/collection.png";
+
+import parisImg from "../assets/paris.webp";
+import managerImg from "../assets/manger.jpg";
+import advisorImg from "../assets/fashionadvisor.jpg";
+import supportImg from "../assets/customersupp.webp";
 
 class StoreInfo {
   constructor(name, city) {
@@ -61,7 +65,7 @@ const chooseItems = [
 
 const teamMembers = [
   {
-    photoClass: "team-photo-1",
+    image: managerImg,
     title: "Store Manager",
     text: "Leading the store with care and style.",
     links: [
@@ -70,7 +74,7 @@ const teamMembers = [
     ],
   },
   {
-    photoClass: "team-photo-2",
+    image: advisorImg,
     title: "Fashion Advisor",
     text: "Helping customers choose the best looks.",
     links: [
@@ -79,7 +83,7 @@ const teamMembers = [
     ],
   },
   {
-    photoClass: "team-photo-3",
+    image: supportImg,
     title: "Customer Support",
     text: "Making every shopping experience better.",
     links: [
@@ -98,7 +102,7 @@ function About() {
             <div className="col-md-5 mb-4">
               <div
                 className="about-image-box"
-                style={{ backgroundImage: `url(${collectionImg})` }}
+                style={{ backgroundImage: `url(${parisImg})` }}
               ></div>
             </div>
 
@@ -193,7 +197,7 @@ function About() {
             {teamMembers.map((member) => (
               <div className="col" key={member.title}>
                 <TeamMemberCard
-                  photoClass={member.photoClass}
+                  image={member.image}
                   title={member.title}
                   text={member.text}
                   links={member.links}
