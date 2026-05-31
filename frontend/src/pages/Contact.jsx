@@ -1,7 +1,65 @@
+import { useState } from "react";
 import Footer from "../components/Footer";
 import contactImg from "../assets/contactus.png";
+import { readStorageList, saveStorageList, validateEmail } from "../utils/storePracticalHelpers";
 
 function Contact() {
+  const [formMessage, setFormMessage] = useState("");
+  const [formStatus, setFormStatus] = useState("success");
+  const [messages, setMessages] = useState(() =>
+    readStorageList("fashion_store_contact_messages", [])
+  );
+
+  const handleContactSubmit = (event) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const name = form.elements.contactName.value.trim();
+    const email = form.elements.contactEmail.value.trim();
+    const subject = form.elements.contactSubject.value.trim();
+    const message = form.elements.contactMessage.value.trim();
+
+    if (name.length < 2) {
+      setFormMessage("Please enter a valid name.");
+      setFormStatus("error");
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      setFormMessage("Please enter a valid email.");
+      setFormStatus("error");
+      return;
+    }
+
+    if (subject.length < 3) {
+      setFormMessage("Subject must contain at least 3 characters.");
+      setFormStatus("error");
+      return;
+    }
+
+    if (message.length < 10) {
+      setFormMessage("Message must contain at least 10 characters.");
+      setFormStatus("error");
+      return;
+    }
+
+    const savedMessage = {
+      name,
+      email,
+      subject,
+      message,
+      date: new Date().toLocaleString(),
+    };
+
+    const nextMessages = [savedMessage, ...messages].slice(0, 3);
+    setMessages(nextMessages);
+    saveStorageList("fashion_store_contact_messages", nextMessages);
+
+    setFormMessage("Your message was saved successfully.");
+    setFormStatus("success");
+    form.reset();
+  };
+
   return (
     <div className="contact-page">
       <section
@@ -61,23 +119,23 @@ function Contact() {
               <div className="contact-form-box h-100">
                 <h3>Send Us a Message</h3>
 
-                <form onSubmit={(event) => event.preventDefault()}>
+                <form onSubmit={handleContactSubmit}>
                   <div className="row">
                     <div className="col-md-6 mb-3">
                       <input
                         type="text"
+                        name="contactName"
                         className="field-control form-control"
                         placeholder="Your Name"
-                        required
                       />
                     </div>
 
                     <div className="col-md-6 mb-3">
                       <input
                         type="email"
+                        name="contactEmail"
                         className="field-control form-control"
                         placeholder="Your Email"
-                        required
                       />
                     </div>
                   </div>
@@ -85,25 +143,46 @@ function Contact() {
                   <div className="mb-3">
                     <input
                       type="text"
+                      name="contactSubject"
                       className="field-control form-control"
                       placeholder="Subject"
-                      required
                     />
                   </div>
 
                   <div className="mb-3">
                     <textarea
+                      name="contactMessage"
                       className="field-control form-control"
                       rows="6"
                       placeholder="Write your message here..."
-                      required
                     ></textarea>
                   </div>
 
                   <button type="submit" className="contact-btn btn btn-primary">
                     Send Message
                   </button>
+
+                  {formMessage && (
+                    <p className={`form-validation-message ${formStatus} mt-3`}>
+                      {formMessage}
+                    </p>
+                  )}
                 </form>
+
+                {messages.length > 0 && (
+                  <div className="mt-4">
+                    <h4>Latest saved messages</h4>
+                    <ul className="notes-list">
+                      {messages.map((item, index) => (
+                        <li key={item.email + index}>
+                          <strong>{item.subject}</strong> from {item.name}
+                          <br />
+                          <small>{item.date}</small>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             </div>
           </div>

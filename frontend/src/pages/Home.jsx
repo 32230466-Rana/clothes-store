@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
+import { readStorageList, saveStorageList, validateEmail } from "../utils/storePracticalHelpers";
 
 import pic1 from "../assets/pic1.png";
 import pic2 from "../assets/pic2.png";
@@ -97,7 +98,9 @@ const initialFeedbacks = [
 ];
 
 function Home() {
-  const [feedbacks, setFeedbacks] = useState(initialFeedbacks);
+  const [feedbacks, setFeedbacks] = useState(() =>
+    readStorageList("fashion_store_feedbacks", initialFeedbacks)
+  );
   const [feedbackMessage, setFeedbackMessage] = useState("");
 
   const handleFeedbackSubmit = (event) => {
@@ -114,14 +117,26 @@ function Home() {
       return;
     }
 
+    if (!validateEmail(email)) {
+      setFeedbackMessage("Please enter a valid email address.");
+      return;
+    }
+
+    if (message.length < 8) {
+      setFeedbackMessage("Feedback must contain at least 8 characters.");
+      return;
+    }
+
     const newFeedback = {
       name: name,
       rating: rating,
       message: message,
     };
 
-    setFeedbacks([newFeedback, ...feedbacks]);
-    setFeedbackMessage("Thank you! Your feedback was added.");
+    const nextFeedbacks = [newFeedback, ...feedbacks].slice(0, 6);
+    setFeedbacks(nextFeedbacks);
+    saveStorageList("fashion_store_feedbacks", nextFeedbacks);
+    setFeedbackMessage("Thank you! Your feedback was saved in this browser.");
     form.reset();
   };
 

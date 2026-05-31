@@ -1,18 +1,19 @@
+import { useState } from "react";
+import { formatCurrency, parseProductPrice } from "../utils/storePracticalHelpers";
+
 function ProductCard({ product, onAdd }) {
-  const handleAddClick = (event) => {
-    const productTitle = event.currentTarget.dataset.productTitle;
+  const firstSize = product.sizes && product.sizes.length > 0 ? product.sizes[0] : "One Size";
+  const [selectedSize, setSelectedSize] = useState(firstSize);
+  const [quantity, setQuantity] = useState(1);
+  const [message, setMessage] = useState("");
 
-    event.currentTarget.classList.add("active");
-    event.currentTarget.blur();
-
-    if (onAdd) {
-      onAdd(product);
-    }
-
-    console.log(`${productTitle} was added to the cart.`);
-  };
+  const priceNumber = parseProductPrice(product.price);
+  const lineTotal = priceNumber * quantity;
 
   const chooseSize = (event) => {
+    const size = event.currentTarget.dataset.size;
+    setSelectedSize(size);
+
     const row = event.currentTarget.parentElement;
 
     if (row) {
@@ -27,8 +28,40 @@ function ProductCard({ product, onAdd }) {
     event.currentTarget.blur();
   };
 
+  const changeQuantity = (event) => {
+    const nextQuantity = Number(event.currentTarget.value);
+
+    if (Number.isNaN(nextQuantity) || nextQuantity < 1) {
+      setQuantity(1);
+      return;
+    }
+
+    setQuantity(nextQuantity);
+  };
+
+  const addSelectedProduct = (event) => {
+    const title = event.currentTarget.dataset.productTitle;
+
+    const cartProduct = {
+      ...product,
+      selectedSize,
+      quantity,
+      cartLineTotal: lineTotal,
+    };
+
+    if (onAdd) {
+      onAdd(cartProduct);
+    }
+
+    setMessage(`${title} - size ${selectedSize} was added (${quantity}).`);
+
+    window.setTimeout(() => {
+      setMessage("");
+    }, 2500);
+  };
+
   return (
-    <article className="product-card old-product-card card h-100">
+    <article className="product-card old-product-card card h-100" data-category={product.category}>
       <div className="product-image old-product-image card-image-frame product-image-frame">
         <img
           src={product.image}
@@ -64,9 +97,7 @@ function ProductCard({ product, onAdd }) {
           <div className="label">Color:</div>
 
           <div className="option-row">
-            <span
-              className={"color-swatch active " + product.colorClass}
-            ></span>
+            <span className={"color-swatch active " + product.colorClass}></span>
           </div>
         </div>
 
@@ -83,6 +114,7 @@ function ProductCard({ product, onAdd }) {
                     ? "size-btn btn btn-outline-primary active"
                     : "size-btn btn btn-outline-primary"
                 }
+                data-size={size}
                 onClick={chooseSize}
                 type="button"
               >
@@ -92,15 +124,34 @@ function ProductCard({ product, onAdd }) {
           </div>
         </div>
 
+        <div className="option-group">
+          <label className="label" htmlFor={"qty-" + product.title.replaceAll(" ", "-")}>Quantity:</label>
+          <input
+            id={"qty-" + product.title.replaceAll(" ", "-")}
+            className="form-control field-control"
+            type="number"
+            min="1"
+            max="10"
+            value={quantity}
+            onChange={changeQuantity}
+          />
+        </div>
+
+        <p className="small mb-2">
+          Selected: <strong>{selectedSize}</strong> | Total: <strong>{formatCurrency(lineTotal)}</strong>
+        </p>
+
         <button
           className="cart-btn product-cart-btn btn btn-primary"
           type="button"
           data-product-title={product.title}
           data-product-category={product.category}
-          onClick={handleAddClick}
+          onClick={addSelectedProduct}
         >
           Add to Cart
         </button>
+
+        {message && <p className="form-validation-message success mt-2">{message}</p>}
       </div>
     </article>
   );

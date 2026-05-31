@@ -2,7 +2,18 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import ProductCard from "../components/ProductCard";
-import JavaScriptShowcase from "../components/JavaScriptShowcase";
+import StoreAssistant from "../components/StoreAssistant";
+import StoreDomTools from "../components/StoreDomTools";
+import {
+  filterProducts,
+  formatCurrency,
+  getDiscountPercent,
+  getProductsTotal,
+  readStorageList,
+  saveStorageList,
+  sortProducts,
+  validateEmail,
+} from "../utils/storePracticalHelpers";
 
 import collectionImg from "../assets/collection.png";
 
@@ -109,38 +120,108 @@ const features = [
 
 function Products({ addToCart }) {
   const [searchText, setSearchText] = useState("");
-const [selectedCategory, setSelectedCategory] = useState("All");
-const [formMessage, setFormMessage] = useState("");
-const [formMessageType, setFormMessageType] = useState("");
-const [showDetails, setShowDetails] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [sortMode, setSortMode] = useState("featured");
+  const [maxBudget, setMaxBudget] = useState("");
+  const [onlyOffers, setOnlyOffers] = useState(false);
+  const [formMessage, setFormMessage] = useState("");
+  const [formMessageType, setFormMessageType] = useState("");
+  const [showDetails, setShowDetails] = useState(false);
+  const [styleRequests, setStyleRequests] = useState(() =>
+    readStorageList("fashion_store_style_requests", [])
+  );
 
-  const filteredProducts = products.filter((product) => {
-    const matchesSearch = product.title
-      .toLowerCase()
-      .includes(searchText.toLowerCase());
+  const filteredProducts = sortProducts(
+    filterProducts(products, searchText, selectedCategory, maxBudget, onlyOffers),
+    sortMode
+  );
 
-    const matchesCategory =
-      selectedCategory === "All" || product.category === selectedCategory;
-
-    return matchesSearch && matchesCategory;
-  });
+  const visibleProductsTotal = getProductsTotal(filteredProducts);
+  const visibleAveragePrice =
+    filteredProducts.length === 0
+      ? 0
+      : visibleProductsTotal / filteredProducts.length;
+  const offerCount = filteredProducts.filter(
+    (product) => getDiscountPercent(product) > 0 || product.badge !== ""
+  ).length;
 
   const handleStyleRequestSubmit = (event) => {
     event.preventDefault();
 
     const form = event.currentTarget;
+    const userId = form.elements.userId.value.trim();
     const userName = form.elements.userName.value.trim();
     const userEmail = form.elements.userEmail.value.trim();
+    const backupEmail = form.elements.backupEmail.value.trim();
+    const userPhone = form.elements.userPhone.value.trim();
+    const mainCategory = form.elements.mainCategory.value;
+    const interestedItems = [];
 
-    if (userName === "" || userEmail === "") {
-      setFormMessage("Please fill your name and email.");
+    if (form.elements.itemDress.checked) interestedItems.push(form.elements.itemDress.value);
+    if (form.elements.itemBag.checked) interestedItems.push(form.elements.itemBag.value);
+    if (form.elements.itemJeans.checked) interestedItems.push(form.elements.itemJeans.value);
+    if (form.elements.itemBlouse.checked) interestedItems.push(form.elements.itemBlouse.value);
+
+    if (userId.length < 4) {
+      setFormMessage("ID must contain at least 4 characters.");
       setFormMessageType("error");
       return;
     }
 
-    setFormMessage("Your style request was saved successfully.");
+    if (userName === "") {
+      setFormMessage("Please enter your name.");
+      setFormMessageType("error");
+      return;
+    }
+
+    if (!validateEmail(userEmail)) {
+      setFormMessage("Please enter a valid email address.");
+      setFormMessageType("error");
+      return;
+    }
+
+    if (backupEmail !== "" && !validateEmail(backupEmail)) {
+      setFormMessage("Backup email is not valid.");
+      setFormMessageType("error");
+      return;
+    }
+
+    if (userPhone !== "" && userPhone.length < 6) {
+      setFormMessage("Phone number is too short.");
+      setFormMessageType("error");
+      return;
+    }
+
+    if (interestedItems.length === 0) {
+      setFormMessage("Choose at least one interested item.");
+      setFormMessageType("error");
+      return;
+    }
+
+    const request = {
+      id: userId,
+      name: userName,
+      email: userEmail,
+      category: mainCategory,
+      items: interestedItems.join(", "),
+      createdAt: new Date().toLocaleString(),
+    };
+
+    const nextRequests = [request, ...styleRequests].slice(0, 3);
+    setStyleRequests(nextRequests);
+    saveStorageList("fashion_store_style_requests", nextRequests);
+
+    setFormMessage("Your style request was saved successfully in this browser.");
     setFormMessageType("success");
     form.reset();
+  };
+
+  const resetProductFilters = () => {
+    setSearchText("");
+    setSelectedCategory("All");
+    setSortMode("featured");
+    setMaxBudget("");
+    setOnlyOffers(false);
   };
 
   return (
@@ -564,8 +645,6 @@ const [showDetails, setShowDetails] = useState(false);
         </div>
       </section>
 
-      <JavaScriptShowcase />
-
       <section
         id="productsArea"
         className="section-space products-section mt-5"
@@ -593,9 +672,80 @@ const [showDetails, setShowDetails] = useState(false);
               <option value="Kids">Kids</option>
               <option value="Handbags">Handbags</option>
             </select>
+
+            <select
+              className="form-select product-category-select"
+              value={sortMode}
+              onChange={(event) => setSortMode(event.target.value)}
+            >
+              <option value="featured">Featured</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="name">Name A-Z</option>
+              <option value="discount">Best Discount</option>
+            </select>
+
+            <input
+              type="number"
+              min="1"
+              className="form-control product-search-input"
+              placeholder="Max budget"
+              value={maxBudget}
+              onChange={(event) => setMaxBudget(event.target.value)}
+            />
+
+            <label className="btn btn-outline-primary mb-0">
+              <input
+                type="checkbox"
+                className="me-2"
+                checked={onlyOffers}
+                onChange={(event) => setOnlyOffers(event.target.checked)}
+              />
+              Offers only
+            </label>
+
+            <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={resetProductFilters}
+            >
+              Reset
+            </button>
           </div>
 
-          <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+          <div className="row row-cols-1 row-cols-md-3 g-3 text-center mb-4">
+            <div className="col">
+              <div className="feature-tile h-100 p-3">
+                <b>{filteredProducts.length}</b>
+                <br />
+                <small>matching products</small>
+              </div>
+            </div>
+            <div className="col">
+              <div className="feature-tile h-100 p-3">
+                <b>{formatCurrency(visibleAveragePrice)}</b>
+                <br />
+                <small>average visible price</small>
+              </div>
+            </div>
+            <div className="col">
+              <div className="feature-tile h-100 p-3">
+                <b>{offerCount}</b>
+                <br />
+                <small>offers in results</small>
+              </div>
+            </div>
+          </div>
+
+          <StoreAssistant
+            products={products}
+            visibleProducts={filteredProducts}
+            onChooseCategory={setSelectedCategory}
+          />
+
+          <StoreDomTools products={products} />
+
+          <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 mt-4">
             {filteredProducts.map((product) => (
               <div className="col" key={product.title}>
                 <ProductCard product={product} onAdd={addToCart} />
@@ -1193,6 +1343,21 @@ Do not bleach`}</pre>
                     <p className={`form-validation-message ${formMessageType}`}>
                       {formMessage}
                     </p>
+                  )}
+
+                  {styleRequests.length > 0 && (
+                    <div className="mt-3">
+                      <h4>Last saved requests</h4>
+                      <ul className="notes-list">
+                        {styleRequests.map((request) => (
+                          <li key={request.id + request.createdAt}>
+                            {request.name} requested {request.items} for {request.category}
+                            <br />
+                            <small>{request.createdAt}</small>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   )}
                 </form>
               </div>
