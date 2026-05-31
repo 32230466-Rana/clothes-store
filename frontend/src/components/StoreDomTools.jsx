@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import {
+  buildJavaScriptStoreReport,
   buildOrderCode,
   calculateDeliveryFee,
-  createReverseCategoryList,
+  convertBudgetValues,
   createStockSequence,
   getValueType,
   normalizeCustomerInput,
@@ -13,11 +14,11 @@ function StoreDomTools({ products = [] }) {
   const [message, setMessage] = useState("Use the tools below to manage store data.");
   const [policy, setPolicy] = useState("Policy not loaded yet.");
   const [sequence, setSequence] = useState([]);
+  const [report, setReport] = useState(null);
 
   const firstImage = products[0]?.image || "";
   const secondImage = products[1]?.image || firstImage;
   const categorySummary = summarizeCategoriesWithVar(products.slice(0, 4));
-  const reverseCategories = createReverseCategoryList(products.slice(0, 4)).join(" > ");
 
   useEffect(() => {
     const firstInput = document.querySelector("#stockCodeInput");
@@ -27,6 +28,19 @@ function StoreDomTools({ products = [] }) {
     }
   }, []);
 
+  const writeLog = (text) => {
+    const logList = document.querySelector("#domToolsLog");
+
+    if (!logList) {
+      return;
+    }
+
+    const logItem = document.createElement("li");
+    logItem.innerText = text;
+    logItem.dataset.time = new Date().toLocaleTimeString();
+    logList.append(logItem);
+  };
+
   const setStatus = (text, type = "success") => {
     const statusBox = document.getElementById("domToolsStatus");
 
@@ -34,9 +48,11 @@ function StoreDomTools({ products = [] }) {
       statusBox.innerHTML = text;
       statusBox.classList.remove("success", "error");
       statusBox.classList.add(type);
+      statusBox.dataset.lastMessage = text;
     }
 
     setMessage(text);
+    writeLog(text);
   };
 
   const addStockRow = () => {
@@ -163,6 +179,16 @@ function StoreDomTools({ products = [] }) {
     setStatus(`Highlighted ${rows.length} stock rows.`);
   };
 
+  const clearHighlight = () => {
+    const rows = document.querySelectorAll("#stockTable tbody tr");
+
+    rows.forEach((row) => {
+      row.classList.remove("table-warning");
+    });
+
+    setStatus("Table highlight removed.");
+  };
+
   const chooseQuickCity = (event) => {
     const button = event.currentTarget;
     const select = document.getElementById("deliveryCitySelect");
@@ -174,6 +200,7 @@ function StoreDomTools({ products = [] }) {
 
     if (status) {
       status.innerHTML = `${button.innerText} selected with fee $${button.dataset.fee}.`;
+      status.dataset.selectedCity = button.dataset.city;
     }
   };
 
@@ -181,7 +208,26 @@ function StoreDomTools({ products = [] }) {
     const table = document.getElementById("stockTable");
     const parentName = table?.parentNode?.className || "no parent";
     const childCount = table?.children?.length || 0;
-    setStatus(`DOM traversal: parent class is ${parentName}, table children count is ${childCount}.`);
+    const inputCount = document.getElementsByTagName("input").length;
+    const firstParagraph = document.querySelector("p")?.innerText || "No paragraph";
+
+    setStatus(
+      `DOM traversal: parent class is ${parentName}, table children count is ${childCount}, inputs: ${inputCount}, first paragraph: ${firstParagraph.slice(0, 35)}.`
+    );
+  };
+
+  const inspectDataset = () => {
+    const status = document.querySelector("#selectedCityStatus");
+
+    if (!status) {
+      setStatus("Dataset target not found.", "error");
+      return;
+    }
+
+    status.dataset.checked = "true";
+    const city = status.dataset.selectedCity || "no city yet";
+    delete status.dataset.checked;
+    setStatus(`Dataset checked. Selected city is ${city}. Temporary dataset value was deleted.`);
   };
 
   const loadPolicy = async () => {
@@ -210,6 +256,25 @@ function StoreDomTools({ products = [] }) {
     }
   };
 
+  const buildStoreReport = () => {
+    const budgetInput = document.getElementById("reportBudgetInput");
+    const result = buildJavaScriptStoreReport(products, budgetInput?.value || "50");
+    setReport(result);
+    setStatus(`${result.fixedStoreName} report generated. ${result.reportLine}`);
+  };
+
+  const checkBudgetConversion = () => {
+    const budgetInput = document.getElementById("reportBudgetInput");
+    const result = convertBudgetValues(budgetInput?.value || "0");
+
+    if (result.isInvalid) {
+      setStatus("Budget is NaN. Write a number only.", "error");
+      return;
+    }
+
+    setStatus(`Budget converted: Number=${result.numberWithNumber}, parseInt=${result.numberWithParseInt}, plus=${result.numberWithPlus}.`);
+  };
+
   const changePreview = (state) => {
     const preview = document.querySelector("#domPreviewImage");
     const label = document.querySelector("#domPreviewLabel");
@@ -230,10 +295,9 @@ function StoreDomTools({ products = [] }) {
           <h3>Store Control Tools</h3>
           <p className="mb-2">
             These tools update real store data: stock rows, delivery cities, shipping fee,
-            image preview, and policy loading.
+            image preview, reports, and policy loading.
           </p>
           <p className="phase-note">Category summary: {categorySummary}</p>
-          <p className="phase-note">Reverse category check: {reverseCategories}</p>
         </div>
 
         <button type="button" className="btn btn-outline-primary align-self-start" onClick={toggleDetails}>
@@ -287,8 +351,14 @@ function StoreDomTools({ products = [] }) {
               <button type="button" className="btn btn-outline-primary" onClick={highlightRows}>
                 Highlight Rows
               </button>
+              <button type="button" className="btn btn-outline-primary" onClick={clearHighlight}>
+                Clear Highlight
+              </button>
               <button type="button" className="btn btn-outline-primary" onClick={inspectDom}>
                 Inspect DOM
+              </button>
+              <button type="button" className="btn btn-outline-primary" onClick={inspectDataset}>
+                Check Dataset
               </button>
             </div>
           </div>
@@ -398,6 +468,86 @@ function StoreDomTools({ products = [] }) {
               )}
             </div>
           </div>
+        </div>
+
+        <div className="card p-3 mt-4">
+          <h4>Store JavaScript Report</h4>
+          <p className="phase-note">
+            This report is generated from the live product list, budget value, category counts, delivery checks, and product prices.
+          </p>
+
+          <div className="row g-2">
+            <div className="col-md-8">
+              <input id="reportBudgetInput" className="form-control field-control" placeholder="Try budget value, example 45" />
+            </div>
+            <div className="col-md-4 d-grid">
+              <button type="button" className="btn btn-primary" onClick={buildStoreReport}>
+                Build Store Report
+              </button>
+            </div>
+          </div>
+
+          <div className="d-flex flex-wrap gap-2 mt-2">
+            <button type="button" className="btn btn-outline-primary" onClick={checkBudgetConversion}>
+              Check Budget Conversion
+            </button>
+          </div>
+
+          {report && (
+            <div className="row g-3 mt-2">
+              <div className="col-md-6">
+                <ul className="notes-list">
+                  <li>{report.reportLine}</li>
+                  <li>Most expensive: {report.mostExpensive}</li>
+                  <li>Order code: {report.orderCode}</li>
+                  <li>{report.priceMessage}</li>
+                  <li>{report.ternaryMessage}</li>
+                  <li>{report.falseLikeMessage}</li>
+                  <li>Stock factorial check: {report.factorial}</li>
+                </ul>
+              </div>
+
+              <div className="col-md-6">
+                <div className="table-wrap">
+                  <table className="table table-bordered table-striped">
+                    <tbody>
+                      {report.typeChecks.map(([label, type]) => (
+                        <tr key={label}>
+                          <td>{label}</td>
+                          <td>{type}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div className="col-md-6">
+                <p className="mb-1"><b>Price matrix</b></p>
+                <ul className="notes-list">
+                  {report.matrix.map((row) => (
+                    <li key={row[0]}>{row.join(" - ")}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="col-md-6">
+                <p className="mb-1"><b>Object entries</b></p>
+                <ul className="notes-list">
+                  {report.objectEntryLines.map((line) => (
+                    <li key={line}>{line}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div className="card p-3 mt-4">
+          <h4>Action Log</h4>
+          <ul id="domToolsLog" className="notes-list mb-0">
+            <li>Store tools ready.</li>
+          </ul>
         </div>
       </div>
     </section>

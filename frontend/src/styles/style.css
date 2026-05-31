@@ -1,4 +1,4 @@
-/* =========================================================
+﻿/* =========================================================
    Fashion Store - CLEANED STYLE.CSS
    Clean version: duplicates removed, working page styles kept.
    Replace: frontend/src/styles/style.css
@@ -2207,7 +2207,7 @@ textarea {
 .old-collection-page .courier-aqua-note {
   background-color: #244d4a;
   color: aqua;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .old-collection-page .upper-roman-list,
@@ -5163,7 +5163,8 @@ body {
     max-width: 280px;
   }
 
-  .old-collection-page a.floating-help-btn.fixed-bottom.btn.btn-outline-primary {
+  .old-collection-page
+    a.floating-help-btn.fixed-bottom.btn.btn-outline-primary {
     bottom: 12px;
     display: inline-block;
     left: auto;
