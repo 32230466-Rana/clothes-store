@@ -2,7 +2,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 
-import collectionImg from "../assets/collection.png";
+import pic1 from "../assets/pic1.png";
+import pic2 from "../assets/pic2.png";
+import pic3 from "../assets/pic3.png";
 import blueDress from "../assets/baby-blue-hijab-evening-dress-22.jpg";
 import brownTshirt from "../assets/brown.webp";
 import blueTshirt from "../assets/bluekid.png";
@@ -12,22 +14,22 @@ import pinkDress from "../assets/pink.webp";
 
 const carouselItems = [
   {
-    image: collectionImg,
-    alt: "Fashion collection",
+    image: pic1,
+    alt: "Fashion carousel style one",
     label: "New Collection",
     title: "Modern looks for every day",
     text: "Clean designs and comfortable style.",
   },
   {
-    image: pinkDress,
-    alt: "Pink outfit",
+    image: pic2,
+    alt: "Fashion carousel style two",
     label: "Spring Discount",
     title: "Fresh styles made for you",
     text: "Soft colors and elegant fashion.",
   },
   {
-    image: blueDress,
-    alt: "Blue dress",
+    image: pic3,
+    alt: "Fashion carousel style three",
     label: "Special Offer",
     title: "Simple style with beauty",
     text: "Perfect everyday outfits.",

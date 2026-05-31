@@ -1,12 +1,12 @@
 import Footer from "../components/Footer";
-import collectionImg from "../assets/collection.png";
+import contactImg from "../assets/contactus.png";
 
 function Contact() {
   return (
     <div className="contact-page">
       <section
         className="contact-page-hero"
-        style={{ backgroundImage: `url(${collectionImg})` }}
+        style={{ backgroundImage: `url(${contactImg})` }}
       >
         <div className="contact-page-overlay"></div>
 

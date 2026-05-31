@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import ProductCard from "../components/ProductCard";
+import JavaScriptShowcase from "../components/JavaScriptShowcase";
 
 import collectionImg from "../assets/collection.png";
 
@@ -562,6 +563,8 @@ const [showDetails, setShowDetails] = useState(false);
           </section>
         </div>
       </section>
+
+      <JavaScriptShowcase />
 
       <section
         id="productsArea"
@@ -1415,7 +1418,7 @@ Do not bleach`}</pre>
 
               <tr>
                 <td>Check</td>
-                <td></td>
+                <td>Wrap</td>
                 <td>Ready</td>
               </tr>
             </tbody>

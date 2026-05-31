@@ -882,7 +882,7 @@ textarea {
   height: 310px;
   border: 2px solid #efd4de;
   border-radius: 12px;
-  background-image: url("../assets/collection.png");
+  background-image: url("../assets/contactus.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -1108,7 +1108,7 @@ textarea {
 .contact-page .contact-page-hero {
   position: relative;
   height: 520px;
-  background-image: url("../assets/collection.png");
+  background-image: url("../assets/contactus.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -1302,7 +1302,7 @@ textarea {
 .old-collection-page .collection-page-hero {
   position: relative;
   min-height: 520px;
-  background-image: url("../assets/collection.png");
+  background-image: url("../assets/contactus.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
@@ -2047,7 +2047,7 @@ textarea {
 }
 
 .old-collection-page .background-short-demo {
-  background: #fff2f7 url("../assets/collection.png") no-repeat right center;
+  background: #fff2f7 url("../assets/contactus.png") no-repeat right center;
   background-size: 160px 85px;
   border: 2px dashed #e6b9cb;
   padding: 28px 190px 28px 20px;
@@ -3863,13 +3863,13 @@ body {
 /* ===== Restore old page images ===== */
 
 .about-image-box {
-  background-image: url("../assets/collection.png");
+  background-image: url("../assets/contactus.png");
   background-size: cover;
   background-position: center center;
 }
 
 .contact-page .contact-page-hero {
-  background-image: url("../assets/collection.png");
+  background-image: url("../assets/contactus.png");
   background-size: cover;
   background-position: center center;
 }
@@ -3884,7 +3884,7 @@ body {
 
 .about-image-box,
 .contact-page .contact-page-hero {
-  background-image: url("../assets/collection.png");
+  background-image: url("../assets/contactus.png");
 }
 
 .store-toggler {
@@ -4923,7 +4923,7 @@ body {
 }
 
 .old-collection-page .background-attachment-demo {
-  background-image: url("../assets/collection.png");
+  background-image: url("../assets/contactus.png");
   background-repeat: no-repeat;
   background-position: right;
   background-size: 200px;

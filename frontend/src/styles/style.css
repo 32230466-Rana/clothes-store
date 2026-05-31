@@ -882,7 +882,7 @@ textarea {
   height: 310px;
   border: 2px solid #efd4de;
   border-radius: 12px;
-  background-image: url("../assets/collection.png");
+  background-image: url("../assets/contactus.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -1108,7 +1108,7 @@ textarea {
 .contact-page .contact-page-hero {
   position: relative;
   height: 520px;
-  background-image: url("../assets/collection.png");
+  background-image: url("../assets/contactus.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -1302,7 +1302,7 @@ textarea {
 .old-collection-page .collection-page-hero {
   position: relative;
   min-height: 520px;
-  background-image: url("../assets/collection.png");
+  background-image: url("../assets/contactus.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
@@ -2047,7 +2047,7 @@ textarea {
 }
 
 .old-collection-page .background-short-demo {
-  background: #fff2f7 url("../assets/collection.png") no-repeat right center;
+  background: #fff2f7 url("../assets/contactus.png") no-repeat right center;
   background-size: 160px 85px;
   border: 2px dashed #e6b9cb;
   padding: 28px 190px 28px 20px;
@@ -2480,11 +2480,10 @@ body {
 }
 /* DESKTOP & LARGE SCREEN RESPONSIVE CONSTRAINTS */
 #root {
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  border-left: none;
-  border-right: none;
+  max-width: 1350px;
+  margin: 0 auto;
+  border-left: 1px solid #f4dce6;
+  border-right: 1px solid #f4dce6;
 }
 
 @media only screen and (min-width: 1200px) {
@@ -3864,13 +3863,13 @@ body {
 /* ===== Restore old page images ===== */
 
 .about-image-box {
-  background-image: url("../assets/collection.png");
+  background-image: url("../assets/contactus.png");
   background-size: cover;
   background-position: center center;
 }
 
 .contact-page .contact-page-hero {
-  background-image: url("../assets/collection.png");
+  background-image: url("../assets/contactus.png");
   background-size: cover;
   background-position: center center;
 }
@@ -3885,7 +3884,7 @@ body {
 
 .about-image-box,
 .contact-page .contact-page-hero {
-  background-image: url("../assets/collection.png");
+  background-image: url("../assets/contactus.png");
 }
 
 .store-toggler {
@@ -4924,7 +4923,7 @@ body {
 }
 
 .old-collection-page .background-attachment-demo {
-  background-image: url("../assets/collection.png");
+  background-image: url("../assets/contactus.png");
   background-repeat: no-repeat;
   background-position: right;
   background-size: 200px;
@@ -6441,5 +6440,147 @@ video {
 
   .form-actions .link-btn {
     width: 100% !important;
+  }
+}
+/* Final Home hero carousel layout: full-width Bootstrap hero with safe overlay. */
+.home-page #fashionCarousel.carousel {
+  background-color: #fff2f7 !important;
+  display: block !important;
+  margin: 0 !important;
+  max-width: none !important;
+  overflow: hidden !important;
+  position: relative !important;
+  width: 100% !important;
+}
+
+.home-page #fashionCarousel .carousel-inner,
+.home-page #fashionCarousel .carousel-item {
+  height: 480px !important;
+  min-height: 0 !important;
+  width: 100% !important;
+}
+
+.home-page #fashionCarousel .carousel-hero-img,
+.home-page #fashionCarousel .carousel-hero-img.d-block.w-100 {
+  display: block !important;
+  height: 100% !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  opacity: 0.92 !important;
+  width: 100% !important;
+}
+
+.home-page #fashionCarousel .custom-caption.carousel-caption {
+  bottom: auto !important;
+  left: 8% !important;
+  max-width: min(520px, 84%) !important;
+  padding: 0 !important;
+  right: auto !important;
+  text-align: left !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: auto !important;
+  z-index: 2 !important;
+}
+
+.home-page #fashionCarousel .label-box {
+  margin-bottom: 16px !important;
+}
+
+.home-page #fashionCarousel .custom-caption h1 {
+  font-size: 52px !important;
+  line-height: 1.1 !important;
+  margin-bottom: 14px !important;
+}
+
+.home-page #fashionCarousel .custom-caption p {
+  font-size: 19px !important;
+  line-height: 1.5 !important;
+  margin-bottom: 22px !important;
+}
+
+.home-page #fashionCarousel .shop-btn {
+  align-items: center !important;
+  display: inline-flex !important;
+  justify-content: center !important;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .home-page #fashionCarousel .carousel-inner,
+  .home-page #fashionCarousel .carousel-item {
+    height: 410px !important;
+  }
+
+  .home-page #fashionCarousel .custom-caption.carousel-caption {
+    left: 7% !important;
+    max-width: min(460px, 84%) !important;
+  }
+
+  .home-page #fashionCarousel .custom-caption h1 {
+    font-size: 42px !important;
+  }
+
+  .home-page #fashionCarousel .custom-caption p {
+    font-size: 17px !important;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .home-page #fashionCarousel .carousel-inner,
+  .home-page #fashionCarousel .carousel-item {
+    height: 340px !important;
+    min-height: 0 !important;
+  }
+
+  .home-page #fashionCarousel .custom-caption.carousel-caption {
+    left: 24px !important;
+    max-width: calc(100% - 48px) !important;
+    right: 24px !important;
+    top: 52% !important;
+  }
+
+  .home-page #fashionCarousel .label-box {
+    margin-bottom: 10px !important;
+    padding: 8px 14px !important;
+  }
+
+  .home-page #fashionCarousel .custom-caption h1 {
+    font-size: 30px !important;
+    line-height: 1.12 !important;
+    margin-bottom: 10px !important;
+  }
+
+  .home-page #fashionCarousel .custom-caption p {
+    font-size: 15px !important;
+    line-height: 1.4 !important;
+    margin-bottom: 16px !important;
+  }
+
+  .home-page #fashionCarousel .shop-btn {
+    min-height: 40px !important;
+    padding: 9px 18px !important;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .home-page #fashionCarousel .carousel-inner,
+  .home-page #fashionCarousel .carousel-item {
+    height: 320px !important;
+  }
+
+  .home-page #fashionCarousel .custom-caption.carousel-caption {
+    left: 18px !important;
+    max-width: calc(100% - 36px) !important;
+    right: 18px !important;
+  }
+
+  .home-page #fashionCarousel .custom-caption h1 {
+    font-size: 27px !important;
+  }
+
+  .home-page #fashionCarousel .custom-caption p {
+    font-size: 14px !important;
   }
 }

@@ -1,10 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 
 const links = [
-  { to: "/", label: "Home" },
-  { to: "/about", label: "About Us" },
-  { to: "/products", label: "Collection" },
-  { to: "/contact", label: "Contact" },
+  { to: "/", label: "Home", shortLabel: "Home" },
+  { to: "/about", label: "About Us", shortLabel: "About" },
+  { to: "/products", label: "Collection", shortLabel: "Shop" },
+  { to: "/contact", label: "Contact", shortLabel: "Contact" },
 ];
 
 const customerLinks = [
@@ -59,7 +59,8 @@ function Navbar({ cartCount = 0 }) {
                           : "nav-link nav-item-link"
                       }
                     >
-                      {item.label}
+                      <span className="nav-label-full">{item.label}</span>
+                      <span className="nav-label-short">{item.shortLabel}</span>
                     </NavLink>
                   </li>
                 ))}
@@ -69,12 +70,30 @@ function Navbar({ cartCount = 0 }) {
                     className="nav-link dropdown-toggle nav-item-link store-care-toggle"
                     type="button"
                     data-bs-toggle="dropdown"
+                    data-bs-display="static"
                     aria-expanded="false"
                   >
-                    Customer Care
+                    <span className="care-label-full">Customer Care</span>
+                    <span className="care-label-short">Customer Care</span>
                   </button>
 
                   <ul className="dropdown-menu store-dropdown-menu">
+                    <li className="dropdown-close-row">
+                      <button
+                        type="button"
+                        className="dropdown-close-button"
+                        aria-label="Close customer care menu"
+                        onClick={(event) => {
+                          event.currentTarget
+                            .closest(".dropdown")
+                            ?.querySelector(".store-care-toggle")
+                            ?.click();
+                        }}
+                      >
+                        X
+                      </button>
+                    </li>
+
                     {customerLinks.map((item) => (
                       <li key={item.to}>
                         <NavLink
@@ -96,7 +115,7 @@ function Navbar({ cartCount = 0 }) {
                   <input
                     className="form-control search-input"
                     type="search"
-                    placeholder="Search..."
+                    placeholder="Search"
                     aria-label="Search"
                   />
                 </form>

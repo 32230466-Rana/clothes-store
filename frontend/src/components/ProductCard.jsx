@@ -1,4 +1,17 @@
 function ProductCard({ product, onAdd }) {
+  const handleAddClick = (event) => {
+    const productTitle = event.currentTarget.dataset.productTitle;
+
+    event.currentTarget.classList.add("active");
+    event.currentTarget.blur();
+
+    if (onAdd) {
+      onAdd(product);
+    }
+
+    console.log(`${productTitle} was added to the cart.`);
+  };
+
   const chooseSize = (event) => {
     const row = event.currentTarget.parentElement;
 
@@ -16,7 +29,7 @@ function ProductCard({ product, onAdd }) {
 
   return (
     <article className="product-card old-product-card card h-100">
-      <div className="product-image old-product-image">
+      <div className="product-image old-product-image card-image-frame product-image-frame">
         <img
           src={product.image}
           alt={product.title}
@@ -82,7 +95,9 @@ function ProductCard({ product, onAdd }) {
         <button
           className="cart-btn product-cart-btn btn btn-primary"
           type="button"
-          onClick={() => (onAdd ? onAdd(product) : null)}
+          data-product-title={product.title}
+          data-product-category={product.category}
+          onClick={handleAddClick}
         >
           Add to Cart
         </button>
