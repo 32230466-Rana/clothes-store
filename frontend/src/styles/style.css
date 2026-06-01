@@ -1,4 +1,4 @@
-/* =========================================================
+﻿/* =========================================================
    Fashion Store - CLEANED STYLE.CSS
    Clean version: duplicates removed, working page styles kept.
    Replace: frontend/src/styles/style.css
@@ -3453,6 +3453,13 @@ body {
 /* Product spacing and compact badges */
 .products-section {
   padding-top: 58px;
+}
+
+/* Products page: tighten the gap before the Products heading */
+.old-collection-page #productsArea.products-tight-section {
+  margin-top: 0;
+  padding-top: 24px;
+  scroll-margin-top: calc(var(--sale-bar-height) + var(--header-height) + 16px);
 }
 
 .old-collection-page .bootstrap-slide-box,
@@ -7435,7 +7442,8 @@ video {
     font-size: 18px;
     line-height: 1.7;
   }
-}/* =========================================================
+}
+/* =========================================================
    PRODUCTS PAGE SPECIFIC OVERRIDES (June 1)
    Safe CSS only - Scoped to .collection-page
    ========================================================= */
@@ -7601,5 +7609,398 @@ video {
   .collection-page .size-table th,
   .collection-page .size-table td {
     padding: 8px 6px !important;
+  }
+}
+
+/* ================================
+   Fix Products filter inputs width
+================================ */
+
+.products-section .product-filter-box {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 35px;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 12px !important;
+  flex-wrap: wrap !important;
+}
+
+.products-section .product-filter-box .product-search-input {
+  width: 220px !important;
+  min-width: 220px !important;
+  max-width: 260px !important;
+  height: 44px !important;
+  flex: 0 0 220px !important;
+}
+
+.products-section .product-filter-box .product-category-select {
+  width: 190px !important;
+  min-width: 190px !important;
+  max-width: 220px !important;
+  height: 44px !important;
+  flex: 0 0 190px !important;
+}
+
+.products-section .product-filter-box .btn,
+.products-section .product-filter-box label.btn {
+  height: 44px !important;
+  padding: 8px 14px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  white-space: nowrap !important;
+}
+
+/* Phone */
+@media only screen and (max-width: 575px) {
+  .products-section .product-filter-box {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 0 12px !important;
+  }
+
+  .products-section .product-filter-box .product-search-input,
+  .products-section .product-filter-box .product-category-select,
+  .products-section .product-filter-box .btn,
+  .products-section .product-filter-box label.btn {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    flex: none !important;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .old-collection-page #productsArea.products-tight-section.section-space {
+    padding-top: 24px !important;
+  }
+}
+
+/* ================================
+   Fix Size Guide table on phones
+   No horizontal scroll
+================================ */
+
+.table-box .table-wrap {
+  width: 100% !important;
+  overflow-x: visible !important;
+}
+
+.table-box .size-table {
+  width: 100% !important;
+  min-width: 0 !important;
+  table-layout: fixed !important;
+}
+
+.table-box .size-table th,
+.table-box .size-table td {
+  white-space: normal !important;
+  word-break: break-word !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+/* Phone table fit */
+@media only screen and (max-width: 575px) {
+  .table-box .size-table th,
+  .table-box .size-table td {
+    font-size: 11px !important;
+    padding: 9px 4px !important;
+    line-height: 1.25 !important;
+  }
+
+  .table-box .size-table caption {
+    font-size: 13px !important;
+    text-align: center !important;
+  }
+
+  .table-box .size-table tfoot td {
+    font-size: 11px !important;
+    padding: 10px 5px !important;
+  }
+}
+
+/* Extra small phones */
+@media only screen and (max-width: 390px) {
+  .table-box .size-table th,
+  .table-box .size-table td {
+    font-size: 10px !important;
+    padding: 8px 3px !important;
+  }
+}
+
+/* Products page responsive finishing pass */
+.old-collection-page,
+.old-collection-page * {
+  box-sizing: border-box;
+}
+
+.old-collection-page {
+  overflow-x: hidden !important;
+}
+
+.old-collection-page .collection-grid-demo .row.row-cols-2 {
+  justify-content: center;
+}
+
+.old-collection-page .collection-grid-demo .grid-demo-link,
+.old-collection-page .category-pill {
+  width: 100%;
+  max-width: 100%;
+  white-space: normal;
+}
+
+.old-collection-page .category-row.nav {
+  align-items: stretch;
+  display: grid !important;
+  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  justify-content: center;
+  margin: 0;
+  padding-left: 0;
+  width: 100%;
+}
+
+.old-collection-page .category-row .nav-item {
+  display: flex;
+  flex: none !important;
+  min-width: 0;
+  width: auto !important;
+}
+
+.old-collection-page .category-pill {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  margin: 0;
+  min-width: 0 !important;
+}
+
+.old-collection-page .form-box {
+  height: auto !important;
+  max-height: none !important;
+  max-width: 760px;
+  min-height: 0 !important;
+  overflow: visible !important;
+  width: 100%;
+}
+
+.old-collection-page .form-box form {
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  width: 100%;
+}
+
+.old-collection-page .form-box .row {
+  min-width: 0;
+}
+
+.old-collection-page .form-box .field-control,
+.old-collection-page .form-box input:not([type="radio"]):not([type="checkbox"]),
+.old-collection-page .form-box select,
+.old-collection-page .form-box textarea {
+  display: block;
+  height: auto;
+  max-width: 100% !important;
+  min-width: 0;
+  width: 100% !important;
+}
+
+.old-collection-page .form-box input[type="radio"],
+.old-collection-page .form-box input[type="checkbox"] {
+  display: inline-block;
+  flex: 0 0 auto;
+  height: auto !important;
+  margin: 0;
+  max-width: none !important;
+  min-width: 0;
+  width: auto !important;
+}
+
+.old-collection-page .form-box .option-demo-line {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  overflow: visible;
+  width: 100%;
+}
+
+.old-collection-page .form-box .option-demo-line label {
+  align-items: center;
+  display: inline-flex;
+  gap: 6px;
+  line-height: 1.4;
+  margin: 0;
+  max-width: 100%;
+  min-width: 0;
+  white-space: normal;
+}
+
+.old-collection-page .collection-banner-img,
+.old-collection-page .hover-demo-image,
+.old-collection-page .details-preview-img,
+.old-collection-page .image-text-container img {
+  display: block;
+  height: auto !important;
+  max-width: 100%;
+  object-fit: contain !important;
+}
+
+.old-collection-page .collection-banner-img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.old-collection-page .product-image,
+.old-collection-page .old-product-image,
+.old-collection-page .product-image-frame {
+  align-items: center !important;
+  aspect-ratio: 4 / 5 !important;
+  display: flex !important;
+  height: auto !important;
+  justify-content: center !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  padding: 12px !important;
+  width: 100% !important;
+}
+
+.old-collection-page .product-image img,
+.old-collection-page .old-product-image img,
+.old-collection-page .product-image-frame img {
+  display: block !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  max-width: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  width: 100% !important;
+}
+
+.old-collection-page .product-card .field-control {
+  max-width: 120px !important;
+}
+
+@media only screen and (min-width: 768px) {
+  .old-collection-page .category-row.nav {
+    display: flex !important;
+    flex-wrap: nowrap;
+    grid-template-columns: none;
+  }
+
+  .old-collection-page .category-row .nav-item {
+    flex: 1 1 0 !important;
+  }
+
+  .old-collection-page .product-image,
+  .old-collection-page .old-product-image,
+  .old-collection-page .product-image-frame {
+    aspect-ratio: 1 / 1 !important;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .old-collection-page {
+    padding-bottom: 120px !important;
+  }
+
+  .old-collection-page .collection-grid-demo .row.row-cols-2 > .col {
+    display: block !important;
+    flex: 0 0 auto !important;
+    max-width: 50% !important;
+    padding-left: calc(var(--bs-gutter-x) * 0.5) !important;
+    padding-right: calc(var(--bs-gutter-x) * 0.5) !important;
+    width: 50% !important;
+  }
+
+  .old-collection-page .category-bar {
+    padding: 10px;
+  }
+
+  .old-collection-page .form-box {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 22px 16px !important;
+  }
+
+  .old-collection-page .form-box .option-demo-line b {
+    flex: 0 0 100%;
+  }
+
+  .old-collection-page .form-actions {
+    align-items: stretch;
+    display: flex !important;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .old-collection-page .form-actions .link-btn {
+    width: 100% !important;
+  }
+
+  .old-collection-page .product-image,
+  .old-collection-page .old-product-image,
+  .old-collection-page .product-image-frame {
+    aspect-ratio: 1 / 1 !important;
+  }
+
+  .old-collection-page .details-preview-img {
+    width: 100% !important;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .old-collection-page .category-row.nav {
+    gap: 8px;
+  }
+
+  .old-collection-page .category-pill,
+  .old-collection-page .collection-grid-demo .grid-demo-link {
+    min-height: 44px;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .old-collection-page .table-wrap {
+    max-width: 100%;
+    overflow-x: visible !important;
+    width: 100%;
+  }
+
+  .old-collection-page .table-wrap table,
+  .old-collection-page .css-slide-table,
+  .old-collection-page .table-extra-demo,
+  .old-collection-page .size-table {
+    min-width: 0 !important;
+    table-layout: fixed !important;
+    width: 100% !important;
+  }
+
+  .old-collection-page .table-wrap th,
+  .old-collection-page .table-wrap td,
+  .old-collection-page .css-slide-table td,
+  .old-collection-page .table-extra-demo td,
+  .old-collection-page .size-table th,
+  .old-collection-page .size-table td {
+    font-size: 11px !important;
+    line-height: 1.25 !important;
+    overflow-wrap: anywhere;
+    padding: 8px 4px !important;
+    white-space: normal !important;
+  }
+
+  .old-collection-page .table-wrap .btn {
+    font-size: 11px !important;
+    line-height: 1.2;
+    min-width: 0;
+    padding: 6px 5px !important;
+    white-space: normal;
   }
 }

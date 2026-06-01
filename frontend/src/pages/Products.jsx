@@ -224,6 +224,20 @@ function Products({ addToCart }) {
     setOnlyOffers(false);
   };
 
+  const showCategoryProducts = (category) => {
+    setSearchText("");
+    setSelectedCategory(category);
+    setMaxBudget("");
+    setOnlyOffers(false);
+
+    setTimeout(() => {
+      document.getElementById("productCardsArea")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }, 150);
+  };
+
   return (
     <div className="collection-page old-collection-page">
       <div className="top-bar">Spring Sale is Here! Enjoy up to 60% off</div>
@@ -278,68 +292,62 @@ function Products({ addToCart }) {
 
             <div className="row row-cols-2 row-cols-md-4 g-3 mt-3">
               <div className="col">
-                <Link
-                  to="/products"
-                  className="grid-demo-link btn btn-outline-primary"
+                <button
+                  type="button"
+                  className="grid-demo-link btn btn-outline-primary w-100"
+                  onClick={() => showCategoryProducts("Women")}
                 >
                   Dresses
-                </Link>
+                </button>
               </div>
 
               <div className="col">
-                <Link
-                  to="/products"
-                  className="grid-demo-link btn btn-outline-primary"
+                <button
+                  type="button"
+                  className="grid-demo-link btn btn-outline-primary w-100"
+                  onClick={() => showCategoryProducts("Men")}
                 >
                   Tops
-                </Link>
+                </button>
               </div>
 
               <div className="col">
-                <Link
-                  to="/products"
-                  className="grid-demo-link btn btn-outline-primary"
+                <button
+                  type="button"
+                  className="grid-demo-link btn btn-outline-primary w-100"
+                  onClick={() => showCategoryProducts("Kids")}
                 >
                   Kids Wear
-                </Link>
+                </button>
               </div>
 
               <div className="col">
-                <Link
-                  to="/products"
-                  className="grid-demo-link btn btn-outline-primary"
+                <button
+                  type="button"
+                  className="grid-demo-link btn btn-outline-primary w-100"
+                  onClick={() => showCategoryProducts("Handbags")}
                 >
                   Handbags
-                </Link>
+                </button>
               </div>
             </div>
           </div>
 
           <div className="category-bar">
             <ul className="nav nav-pills nav-justified category-row">
-              <li className="nav-item">
-                <Link to="/products" className="nav-link category-pill active">
-                  Women
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link to="/products" className="nav-link category-pill">
-                  Men
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link to="/products" className="nav-link category-pill">
-                  Kids
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link to="/products" className="nav-link category-pill">
-                  Handbags
-                </Link>
-              </li>
+              {["Women", "Men", "Kids", "Handbags"].map((category) => (
+                <li className="nav-item" key={category}>
+                  <button
+                    type="button"
+                    className={`nav-link category-pill ${
+                      selectedCategory === category ? "active" : ""
+                    }`}
+                    onClick={() => showCategoryProducts(category)}
+                  >
+                    {category}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -631,7 +639,7 @@ function Products({ addToCart }) {
                 <tr>
                   <td>Men</td>
                   <td>T-Shirt</td>
-                  <td></td>
+                  <td>Available</td>
                 </tr>
 
                 <tr>
@@ -647,7 +655,7 @@ function Products({ addToCart }) {
 
       <section
         id="productsArea"
-        className="section-space products-section mt-5"
+        className="section-space products-section products-tight-section"
       >
         <div className="container">
           <h2 className="section-title">Products</h2>
@@ -745,7 +753,10 @@ function Products({ addToCart }) {
 
           <StoreDomTools products={products} />
 
-          <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 mt-4">
+          <div
+            id="productCardsArea"
+            className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 mt-4"
+          >
             {filteredProducts.map((product) => (
               <div className="col" key={product.title}>
                 <ProductCard product={product} onAdd={addToCart} />
