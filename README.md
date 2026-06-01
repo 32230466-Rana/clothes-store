@@ -28,6 +28,7 @@ The goal of this project is to apply web design and development principles using
 * Reusable React components
 * Organized CSS styling
 * Git and GitHub version control
+* Frontend deployment using Vercel
 
 ## Pages
 
@@ -53,7 +54,7 @@ The application includes more than four pages:
 * Bootstrap
 * Git
 * GitHub
-* Vercel / Netlify / GitHub Pages for deployment
+* Vercel
 
 ## Project Structure
 
@@ -70,8 +71,6 @@ clothes-store/
 │   │   └── main.jsx
 │   ├── package.json
 │   └── vite.config.js
-├── docs/
-│   └── screenshots/
 └── README.md
 ```
 
@@ -109,38 +108,42 @@ http://localhost:5173
 
 ## Deployment
 
-The frontend project can be deployed using Vercel, Netlify, or GitHub Pages.
+The frontend project is deployed using Vercel.
 
 Deployment link:
-Add your deployed website link here.
+https://clothes-store-taupe-delta.vercel.app/
 
 ## Project Images
 
 These images are included in the project assets and use relative paths that work on GitHub.
 
-### Home Hero
+### Home Page
 
-![Home hero](./frontend/src/assets/hero.png)
+<img src="frontend/src/assets/home.png" alt="Home Page" width="100%">
 
-### Collection Page
+### Products Page
 
-![Collection page](./frontend/src/assets/collection.png)
+<img src="frontend/src/assets/products.png" alt="Products Page" width="100%">
+
+### About Page
+
+<img src="frontend/src/assets/about.png" alt="About Page" width="100%">
 
 ### Contact Page
 
-![Contact page](./frontend/src/assets/contactus.png)
+<img src="frontend/src/assets/contact.png" alt="Contact Page" width="100%">
+
+### Collection Page
+
+<img src="frontend/src/assets/collection.png" alt="Collection Page" width="100%">
+
+### Mobile Responsive View
+
+<img src="frontend/src/assets/mobile-responsive.png" alt="Mobile Responsive View" width="350">
 
 ### Customer Support
 
-![Customer support](./frontend/src/assets/customersupp.webp)
-
-### Product Examples
-
-![Pink dress](./frontend/src/assets/pink.webp)
-
-![Blue kids outfit](./frontend/src/assets/bluekid.png)
-
-![Black handbag](./frontend/src/assets/blackbag.webp)
+<img src="frontend/src/assets/customersupp.webp" alt="Customer Support" width="100%">
 
 ## Git and Version Control
 
