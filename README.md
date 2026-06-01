@@ -163,3 +163,13 @@ This project was completed by the group members as part of CSCI390 Web Programmi
 CSCI390: Web Programming
 Project Phase 2
 Department of Computer Science and Information Technology
+
+### Responsive Views
+
+<img src="frontend/src/assets/R1.png" alt="Responsive View 1" width="100%">
+
+<img src="frontend/src/assets/r2.png" alt="Responsive View 2" width="100%">
+
+<img src="frontend/src/assets/R3.png" alt="Responsive View 3" width="100%">
+
+<img src="frontend/src/assets/r4.png" alt="Responsive View 4" width="100%">
