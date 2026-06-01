@@ -7435,4 +7435,171 @@ video {
     font-size: 18px;
     line-height: 1.7;
   }
+}/* =========================================================
+   PRODUCTS PAGE SPECIFIC OVERRIDES (June 1)
+   Safe CSS only - Scoped to .collection-page
+   ========================================================= */
+
+/* Prevent horizontal scroll entirely */
+.collection-page {
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+}
+
+/* Base shape for products page cards */
+.collection-page .product-card {
+  width: 100% !important;
+  overflow: hidden !important;
+  border-radius: 16px !important;
+}
+
+/* Image wrapper setup for all sizes */
+.collection-page .product-image-frame {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  overflow: hidden !important;
+  background-color: #fff7fb !important;
+}
+
+/* Constrain image perfectly to the wrapper */
+.collection-page .product-image-frame img {
+  width: 100% !important;
+  max-width: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  display: block !important;
+  height: 100% !important;
+}
+
+/* Tablet (768px+) Grid & Heights */
+@media only screen and (min-width: 768px) {
+  .collection-page .product-image-frame {
+    height: 220px !important;
+  }
+  .collection-page .row.row-cols-1.row-cols-md-4 {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+    gap: 20px !important;
+    justify-content: center !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+  }
+}
+
+/* Desktop (1024px+) Heights */
+@media only screen and (min-width: 1024px) {
+  .collection-page .product-image-frame {
+    height: 240px !important;
+  }
+}
+
+/* Mobile specific styling overriding previous fixes */
+@media only screen and (max-width: 767px) {
+  /* Grid handling for the `.row` wrap */
+  .collection-page .row.row-cols-1.row-cols-md-4 {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    padding: 0 10px !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    justify-items: center !important;
+  }
+
+  /* Each product card wrapper col */
+  .collection-page .row > .col {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  /* Product Card Mobile Shape */
+  .collection-page .product-card {
+    width: 92vw !important;
+    max-width: 340px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    margin: 0 auto !important;
+  }
+
+  /* Fixed wrapper for mobile */
+  .collection-page .product-image-frame {
+    height: 180px !important;
+    align-items: center !important; /* Center the image in wrapper */
+  }
+
+  .collection-page .product-image-frame img {
+    height: 100% !important;
+  }
+
+  /* Tidy up product body spacing so elements don't get squished */
+  .collection-page .product-body {
+    padding: 15px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex-grow: 1 !important;
+  }
+
+  /* Stop quantity input from blowing up */
+  .collection-page .field-control {
+    max-width: 100px !important;
+  }
+
+  /* Floating Need Help Button Fixes */
+  .floating-help-btn {
+    right: 10px !important;
+    bottom: 10px !important;
+    transform: scale(0.9);
+    transform-origin: bottom right;
+    z-index: 1050 !important;
+  }
+
+  /* Space for Need Help button */
+  .collection-page {
+    padding-bottom: 90px !important;
+  }
+
+  /* Float Boxes (Women / Men) Mobile Flow */
+  .collection-page .float-box-left,
+  .collection-page .float-box-right {
+    float: none !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 0 15px 0 !important;
+    padding: 15px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Quick Size Guide Table Mobile Flow */
+  .collection-page .table-box {
+    padding: 20px 10px !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+  .collection-page .table-wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    display: block !important;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 20px !important;
+  }
+  .collection-page .table-wrap table,
+  .collection-page .size-table {
+    min-width: 450px !important;
+    width: 100% !important;
+    font-size: 13px !important;
+  }
+  .collection-page .size-table th,
+  .collection-page .size-table td {
+    padding: 8px 6px !important;
+  }
 }

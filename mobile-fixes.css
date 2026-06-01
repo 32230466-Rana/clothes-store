@@ -1,0 +1,81 @@
+/* MOBILE RESPONSIVE FIXES FOR /PRODUCTS (MAY 31 2026) */
+@media only screen and (max-width: 767px) {
+  /* 1. Product Images / Cards */
+  .collection-page .product-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 0 20px 0 !important;
+    display: block !important;
+  }
+  .collection-page .product-card img {
+    width: 100% !important;
+    height: 300px !important; /* Uniform height */
+    object-fit: contain !important; /* Ensure image is never cropped */
+    object-position: center !important;
+  }
+
+  /* 2. Float Boxes (Women / Men) */
+  .collection-page .float-box-left,
+  .collection-page .float-box-right {
+    float: none !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 0 15px 0 !important;
+    padding: 15px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 3. Quick Size Guide */
+  .collection-page .table-box {
+    padding: 20px 10px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important; /* contain horizontal overflow */
+  }
+  .collection-page .table-wrap {
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: auto !important;
+    display: block !important;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 20px !important;
+  }
+  .collection-page .table-wrap table,
+  .collection-page .size-table {
+    min-width: 450px !important; /* reduced from 650px to fit better with less scrolling */
+    width: 100% !important;
+    font-size: 13px !important;
+  }
+  .collection-page .size-table th,
+  .collection-page .size-table td {
+    padding: 8px 6px !important;
+    font-size: 13px !important;
+  }
+
+  /* 4. Category Layout Preview Centered */
+  .collection-page .inline-grid-demo,
+  .collection-page .layout-demo {
+    display: grid !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 auto 15px auto !important;
+    justify-content: center !important;
+  }
+
+  /* 5. Floating Need Help Button Fixes */
+  .floating-help-btn {
+    right: 15px !important;
+    bottom: 15px !important;
+    padding: 8px 12px !important;
+    font-size: 12px !important;
+    transform: scale(0.9);
+    transform-origin: bottom right;
+    opacity: 0.9 !important;
+  }
+  /* Provide padding to bottom of page so float button doesn't hide text */
+  .collection-page {
+    padding-bottom: 70px !important;
+  }
+}
