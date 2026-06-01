@@ -240,6 +240,13 @@ function Products({ addToCart }) {
 
   return (
     <div className="collection-page old-collection-page">
+      <aside
+        className="collection-fixed-note"
+        aria-label="Collection page responsive design note"
+      >
+        Note: Jeneen AboLaila is responsible for responsive design in the Collection page only. If you want to call her, her number is +96181635993.
+      </aside>
+
       <div className="top-bar">Spring Sale is Here! Enjoy up to 60% off</div>
 
       <header

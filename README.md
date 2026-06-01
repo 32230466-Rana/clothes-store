@@ -114,27 +114,33 @@ The frontend project can be deployed using Vercel, Netlify, or GitHub Pages.
 Deployment link:
 Add your deployed website link here.
 
-## Screenshots
+## Project Images
 
-### Home Page
+These images are included in the project assets and use relative paths that work on GitHub.
 
-![Home Page](docs/screenshots/home.png)
+### Home Hero
 
-### Products Page
+![Home hero](./frontend/src/assets/hero.png)
 
-![Products Page](docs/screenshots/products.png)
+### Collection Page
 
-### About Page
-
-![About Page](docs/screenshots/about.png)
+![Collection page](./frontend/src/assets/collection.png)
 
 ### Contact Page
 
-![Contact Page](docs/screenshots/contact.png)
+![Contact page](./frontend/src/assets/contactus.png)
 
-### Mobile Responsive View
+### Customer Support
 
-![Mobile View](docs/screenshots/mobile.png)
+![Customer support](./frontend/src/assets/customersupp.webp)
+
+### Product Examples
+
+![Pink dress](./frontend/src/assets/pink.webp)
+
+![Blue kids outfit](./frontend/src/assets/bluekid.png)
+
+![Black handbag](./frontend/src/assets/blackbag.webp)
 
 ## Git and Version Control
 
