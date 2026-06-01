@@ -6585,3 +6585,475 @@ video {
     font-size: 14px !important;
   }
 }
+/* ================================
+   HEADER ONE LINE ON PHONES ONLY
+================================ */
+
+@media only screen and (max-width: 575px) {
+  .main-header,
+  .store-header,
+  .navbar-area {
+    width: 100% !important;
+  }
+
+  .store-navbar,
+  .navbar {
+    padding: 12px 6px !important;
+  }
+
+  .header-inner,
+  .store-navbar .container-fluid,
+  .navbar .container-fluid {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 5px !important;
+    width: 100% !important;
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+  }
+
+  .navbar-brand,
+  .store-brand {
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .brand-logo,
+  .navbar-brand .brand-logo,
+  .store-brand .brand-logo {
+    width: 34px !important;
+    height: 34px !important;
+    font-size: 13px !important;
+  }
+
+  .brand-tagline,
+  .store-tagline,
+  .navbar-brand small,
+  .navbar-brand span:not(.brand-logo) {
+    display: none !important;
+  }
+
+  .navbar-toggler {
+    display: none !important;
+  }
+
+  .navbar-collapse,
+  .store-navbar-collapse,
+  #storeNavbar {
+    display: flex !important;
+    flex-basis: auto !important;
+    flex-grow: 1 !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: auto !important;
+  }
+
+  .navbar-nav,
+  .store-nav-links {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 3px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .navbar-nav .nav-item,
+  .store-nav-links .nav-item {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .navbar-nav .nav-link,
+  .store-nav-links .nav-link {
+    font-size: 7px !important;
+    padding: 5px 4px !important;
+    white-space: nowrap !important;
+    line-height: 1 !important;
+  }
+
+  .header-right,
+  .navbar-actions {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 4px !important;
+    width: auto !important;
+    margin: 0 !important;
+  }
+
+  .store-search,
+  .header-right form,
+  form.store-search {
+    margin: 0 !important;
+    width: auto !important;
+  }
+
+  .search-input,
+  .store-search input,
+  .navbar input[type="search"] {
+    width: 72px !important;
+    max-width: 72px !important;
+    height: 30px !important;
+    font-size: 9px !important;
+    padding: 4px 6px !important;
+  }
+
+  .cart-link,
+  .cart-btn,
+  .header-right .btn {
+    height: 30px !important;
+    padding: 5px 8px !important;
+    font-size: 9px !important;
+    white-space: nowrap !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  .cart-link .badge,
+  .cart-btn .badge {
+    font-size: 8px !important;
+    min-width: 15px !important;
+    height: 15px !important;
+    padding: 2px !important;
+  }
+}
+
+/* Extra small phones */
+@media only screen and (max-width: 390px) {
+  .navbar-nav .nav-link,
+  .store-nav-links .nav-link {
+    font-size: 6.5px !important;
+    padding: 5px 3px !important;
+  }
+
+  .search-input,
+  .store-search input,
+  .navbar input[type="search"] {
+    width: 62px !important;
+    max-width: 62px !important;
+  }
+
+  .cart-link,
+  .cart-btn,
+  .header-right .btn {
+    padding: 5px 6px !important;
+    font-size: 8px !important;
+  }
+}
+/* ===== Fix product images cropping ===== */
+
+.product-card,
+.collection-card,
+.shop-card {
+  overflow: hidden;
+  border-radius: 14px;
+  background: #fff;
+}
+
+/* image box */
+.product-card .product-image,
+.product-card .product-img,
+.product-card .image-box,
+.product-card .card-img-top,
+.collection-card .product-image,
+.collection-card .product-img,
+.collection-card .image-box,
+.collection-card .card-img-top,
+.shop-card .product-image,
+.shop-card .product-img,
+.shop-card .image-box,
+.shop-card .card-img-top {
+  width: 100%;
+  height: 320px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #faf7f9;
+  overflow: hidden;
+}
+
+/* actual image */
+.product-card img,
+.collection-card img,
+.shop-card img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  display: block;
+  background: #faf7f9;
+}
+
+/* keep badge above image */
+.product-card,
+.collection-card,
+.shop-card {
+  position: relative;
+}
+
+.product-card .badge,
+.product-card .product-badge,
+.product-card .discount-badge,
+.collection-card .badge,
+.collection-card .product-badge,
+.collection-card .discount-badge,
+.shop-card .badge,
+.shop-card .product-badge,
+.shop-card .discount-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 5;
+}
+
+/* tablet */
+@media only screen and (max-width: 991px) {
+  .product-card .product-image,
+  .product-card .product-img,
+  .product-card .image-box,
+  .product-card .card-img-top,
+  .collection-card .product-image,
+  .collection-card .product-img,
+  .collection-card .image-box,
+  .collection-card .card-img-top,
+  .shop-card .product-image,
+  .shop-card .product-img,
+  .shop-card .image-box,
+  .shop-card .card-img-top {
+    height: 290px !important;
+  }
+}
+
+/* phone */
+@media only screen and (max-width: 575px) {
+  .product-card .product-image,
+  .product-card .product-img,
+  .product-card .image-box,
+  .product-card .card-img-top,
+  .collection-card .product-image,
+  .collection-card .product-img,
+  .collection-card .image-box,
+  .collection-card .card-img-top,
+  .shop-card .product-image,
+  .shop-card .product-img,
+  .shop-card .image-box,
+  .shop-card .card-img-top {
+    height: 250px !important;
+  }
+}
+/* =========================================
+   REAL FIX: Products images should NOT crop
+   Put this at the VERY END of style.css
+========================================= */
+
+.products-page .card img,
+.products-page .product-card img,
+.products-page .product-box img,
+.products-page .collection-card img,
+.products-page .shop-card img,
+.products-grid .card img,
+.products-grid .product-card img,
+.products-grid .product-box img,
+.product-grid .card img,
+.product-grid .product-card img,
+.product-list .card img,
+.product-list .product-card img,
+.products-section .card img,
+.products-section .product-card img,
+.collection-page .card img,
+.collection-page .product-card img {
+  width: 100% !important;
+  height: 300px !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  background-color: #fff7fb !important;
+  display: block !important;
+}
+
+/* If the image itself has these classes */
+img.product-image,
+img.product-img,
+img.product-photo,
+img.card-img-top,
+img.collection-img {
+  width: 100% !important;
+  height: 300px !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  background-color: #fff7fb !important;
+  display: block !important;
+}
+
+/* If there is a wrapper around the image */
+.product-image,
+.product-img,
+.product-photo,
+.card-img-top,
+.image-box,
+.product-image-box,
+.product-card-image {
+  width: 100% !important;
+  height: 300px !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  background-color: #fff7fb !important;
+  overflow: hidden !important;
+}
+
+/* Image inside wrapper */
+.product-image img,
+.product-img img,
+.product-photo img,
+.image-box img,
+.product-image-box img,
+.product-card-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  background-color: #fff7fb !important;
+  display: block !important;
+}
+
+/* Phone */
+@media only screen and (max-width: 575px) {
+  .products-page .card img,
+  .products-page .product-card img,
+  .products-grid .card img,
+  .products-grid .product-card img,
+  .products-section .card img,
+  .products-section .product-card img,
+  .collection-page .card img,
+  .collection-page .product-card img,
+  img.product-image,
+  img.product-img,
+  img.product-photo,
+  img.card-img-top,
+  img.collection-img,
+  .product-image,
+  .product-img,
+  .product-photo,
+  .card-img-top,
+  .image-box,
+  .product-image-box,
+  .product-card-image {
+    height: 260px !important;
+  }
+}
+/* Center the small Women / Men / Kids / Bags table */
+.category-layout-center {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 18px auto 28px;
+}
+
+.category-layout-center .inline-grid-title {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.category-layout-center .centered-category-table {
+  width: max-content !important;
+  margin: 0 auto !important;
+  display: grid !important;
+  grid-template-columns: repeat(2, 95px) !important;
+  gap: 8px !important;
+  justify-content: center !important;
+}
+
+@media only screen and (max-width: 575px) {
+  .category-layout-center .centered-category-table {
+    grid-template-columns: repeat(2, 82px) !important;
+    gap: 6px !important;
+  }
+}
+/* ================================
+   Fix Products filter row layout
+================================ */
+
+.products-section .product-filter-box {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto 35px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  flex-wrap: wrap !important;
+}
+
+.products-section .product-search-input {
+  min-width: 220px !important;
+  max-width: 280px !important;
+  height: 44px !important;
+  flex: 1 1 220px !important;
+}
+
+.products-section .product-category-select {
+  min-width: 170px !important;
+  max-width: 210px !important;
+  height: 44px !important;
+  flex: 0 0 auto !important;
+}
+
+.products-section .product-filter-box .btn,
+.products-section .product-filter-box label.btn {
+  height: 44px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  white-space: nowrap !important;
+  padding: 8px 14px !important;
+}
+
+/* stats cards under filters */
+.products-section .row.row-cols-1.row-cols-md-3 {
+  max-width: 980px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Tablet */
+@media only screen and (max-width: 991px) {
+  .products-section .product-filter-box {
+    max-width: 720px;
+    gap: 10px !important;
+  }
+
+  .products-section .product-search-input,
+  .products-section .product-category-select {
+    min-width: 190px !important;
+    max-width: 100% !important;
+    flex: 1 1 190px !important;
+  }
+}
+
+/* Phone */
+@media only screen and (max-width: 575px) {
+  .products-section .product-filter-box {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 0 12px !important;
+  }
+
+  .products-section .product-search-input,
+  .products-section .product-category-select,
+  .products-section .product-filter-box .btn,
+  .products-section .product-filter-box label.btn {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+}

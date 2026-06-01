@@ -224,6 +224,19 @@ function Products({ addToCart }) {
     setOnlyOffers(false);
   };
 
+  const showCategoryProducts = (category) => {
+    setSearchText("");
+    setSelectedCategory(category);
+    setMaxBudget("");
+    setOnlyOffers(false);
+
+    setTimeout(() => {
+      document
+        .getElementById("productsArea")
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 0);
+  };
+
   return (
     <div className="collection-page old-collection-page">
       <div className="top-bar">Spring Sale is Here! Enjoy up to 60% off</div>
@@ -266,80 +279,21 @@ function Products({ addToCart }) {
             ))}
           </div>
 
-          <div className="collection-grid-demo mt-4">
-            <div className="row">
-              <div className="col-sm-4 p-3 bg-primary text-white">
-                Dress Picks
-              </div>
-              <div className="col-sm-8 p-3 bg-dark text-white">
-                Soft dresses, matching bags, and easy daily outfits
-              </div>
-            </div>
-
-            <div className="row row-cols-2 row-cols-md-4 g-3 mt-3">
-              <div className="col">
-                <Link
-                  to="/products"
-                  className="grid-demo-link btn btn-outline-primary"
-                >
-                  Dresses
-                </Link>
-              </div>
-
-              <div className="col">
-                <Link
-                  to="/products"
-                  className="grid-demo-link btn btn-outline-primary"
-                >
-                  Tops
-                </Link>
-              </div>
-
-              <div className="col">
-                <Link
-                  to="/products"
-                  className="grid-demo-link btn btn-outline-primary"
-                >
-                  Kids Wear
-                </Link>
-              </div>
-
-              <div className="col">
-                <Link
-                  to="/products"
-                  className="grid-demo-link btn btn-outline-primary"
-                >
-                  Handbags
-                </Link>
-              </div>
-            </div>
-          </div>
-
           <div className="category-bar">
             <ul className="nav nav-pills nav-justified category-row">
-              <li className="nav-item">
-                <Link to="/products" className="nav-link category-pill active">
-                  Women
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link to="/products" className="nav-link category-pill">
-                  Men
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link to="/products" className="nav-link category-pill">
-                  Kids
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link to="/products" className="nav-link category-pill">
-                  Handbags
-                </Link>
-              </li>
+              {["Women", "Men", "Kids", "Handbags"].map((category) => (
+                <li className="nav-item" key={category}>
+                  <button
+                    type="button"
+                    className={`nav-link category-pill ${
+                      selectedCategory === category ? "active" : ""
+                    }`}
+                    onClick={() => showCategoryProducts(category)}
+                  >
+                    {category}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
 
