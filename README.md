@@ -135,7 +135,7 @@ These images are included in the project assets and use relative paths that work
 
 ### Collection Page
 
-<img src="frontend/src/assets/collection.png" alt="Collection Page" width="100%">
+<!-- <img src="frontend/src/assets/collection.png" alt="Collection Page" width="100%"> -->
 
 ### Mobile Responsive View
 
@@ -143,7 +143,7 @@ These images are included in the project assets and use relative paths that work
 
 ### Customer Support
 
-<img src="frontend/src/assets/customersupp.webp" alt="Customer Support" width="100%">
+<!-- <img src="frontend/src/assets/customersupp.webp" alt="Customer Support" width="100%"> -->
 
 ## Git and Version Control
 
