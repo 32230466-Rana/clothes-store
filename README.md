@@ -118,23 +118,27 @@ Add your deployed website link here.
 
 ### Home Page
 
-![Home Page](docs/screenshots/home.png)
+![Home Page](./frontend/src/assets/home.png)
 
 ### Products Page
 
-![Products Page](docs/screenshots/products.png)
+![Products Page](./frontend/src/assets/products.png)
 
 ### About Page
 
-![About Page](docs/screenshots/about.png)
+![About Page](./frontend/src/assets/about.png)
 
 ### Contact Page
 
-![Contact Page](docs/screenshots/contact.png)
+![Contact Page](./frontend/src/assets/contact.png)
+
+### Collection Page
+
+![Collection Page](./frontend/src/assets/collection.png)
 
 ### Mobile Responsive View
 
-![Mobile View](docs/screenshots/mobile.png)
+![Mobile Responsive View](./frontend/src/assets/Screenshot%20(1155).png)
 
 ## Git and Version Control
 
