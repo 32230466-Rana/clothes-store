@@ -1,4 +1,4 @@
-/* =========================================================
+﻿/* =========================================================
    Fashion Store - CLEANED STYLE.CSS
    Clean version: duplicates removed, working page styles kept.
    Replace: frontend/src/styles/style.css
@@ -882,7 +882,7 @@ textarea {
   height: 310px;
   border: 2px solid #efd4de;
   border-radius: 12px;
-  background-image: url("../assets/collection.png");
+  background-image: url("../assets/contactus.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -1108,7 +1108,7 @@ textarea {
 .contact-page .contact-page-hero {
   position: relative;
   height: 520px;
-  background-image: url("../assets/collection.png");
+  background-image: url("../assets/contactus.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -1302,7 +1302,7 @@ textarea {
 .old-collection-page .collection-page-hero {
   position: relative;
   min-height: 520px;
-  background-image: url("../assets/collection.png");
+  background-image: url("../assets/contactus.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
@@ -2047,7 +2047,7 @@ textarea {
 }
 
 .old-collection-page .background-short-demo {
-  background: #fff2f7 url("../assets/collection.png") no-repeat right center;
+  background: #fff2f7 url("../assets/contactus.png") no-repeat right center;
   background-size: 160px 85px;
   border: 2px dashed #e6b9cb;
   padding: 28px 190px 28px 20px;
@@ -2480,11 +2480,10 @@ body {
 }
 /* DESKTOP & LARGE SCREEN RESPONSIVE CONSTRAINTS */
 #root {
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  border-left: none;
-  border-right: none;
+  max-width: 1350px;
+  margin: 0 auto;
+  border-left: 1px solid #f4dce6;
+  border-right: 1px solid #f4dce6;
 }
 
 @media only screen and (min-width: 1200px) {
@@ -3864,13 +3863,13 @@ body {
 /* ===== Restore old page images ===== */
 
 .about-image-box {
-  background-image: url("../assets/collection.png");
+  background-image: url("../assets/contactus.png");
   background-size: cover;
   background-position: center center;
 }
 
 .contact-page .contact-page-hero {
-  background-image: url("../assets/collection.png");
+  background-image: url("../assets/contactus.png");
   background-size: cover;
   background-position: center center;
 }
@@ -3885,7 +3884,7 @@ body {
 
 .about-image-box,
 .contact-page .contact-page-hero {
-  background-image: url("../assets/collection.png");
+  background-image: url("../assets/contactus.png");
 }
 
 .store-toggler {
@@ -4924,7 +4923,7 @@ body {
 }
 
 .old-collection-page .background-attachment-demo {
-  background-image: url("../assets/collection.png");
+  background-image: url("../assets/contactus.png");
   background-repeat: no-repeat;
   background-position: right;
   background-size: 200px;
@@ -6444,995 +6443,145 @@ video {
     width: 100% !important;
   }
 }
-
-/* ===== Final responsive one-line navbar and square media cards ===== */
-:root {
-  --sale-bar-height: 38px;
-  --header-height: 70px;
-}
-
-.top-discount {
-  align-items: center !important;
-  display: flex !important;
-  font-size: 15px !important;
-  justify-content: center !important;
-  line-height: 1.2 !important;
-  min-height: var(--sale-bar-height) !important;
-  padding: 6px 12px !important;
-  position: sticky !important;
-  top: 0 !important;
-  white-space: nowrap !important;
-  z-index: 1020 !important;
-}
-
-.main-header,
-.store-header,
-.store-navbar {
-  margin: 0 !important;
-  overflow: visible !important;
-}
-
-.main-header {
-  position: sticky !important;
-  top: var(--sale-bar-height) !important;
-}
-
-.navbar-area,
-.store-navbar.navbar {
-  padding: 0 !important;
-}
-
-.store-navbar.navbar > .container-fluid,
-.header-inner {
-  align-items: center !important;
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
-  gap: 14px !important;
-  justify-content: flex-start !important;
-  min-height: var(--header-height) !important;
-  overflow: visible !important;
-  padding: 0 28px !important;
-  width: 100% !important;
-}
-
-.store-toggler.navbar-toggler {
-  display: none !important;
-}
-
-.store-brand {
-  align-items: center !important;
-  display: flex !important;
-  flex: 0 0 auto !important;
-  flex-direction: row !important;
-  gap: 10px !important;
-  margin: 0 !important;
-  min-width: 0 !important;
-  white-space: nowrap !important;
-}
-
-.brand-mark {
-  flex: 0 0 auto !important;
-  height: 52px !important;
-  width: 52px !important;
-  font-size: 21px !important;
-}
-
-.brand-text {
-  display: inline-block !important;
-  font-size: 14px !important;
-  margin: 0 !important;
-  max-width: 142px !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-  white-space: nowrap !important;
-}
-
-.store-navbar-collapse.collapse:not(.show),
-.store-navbar-collapse.collapse.show,
-.store-navbar-collapse.collapsing,
-.store-navbar-collapse {
-  align-items: center !important;
-  background: transparent !important;
-  border: 0 !important;
-  display: flex !important;
-  flex: 1 1 auto !important;
-  flex-basis: auto !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
-  gap: 12px !important;
-  justify-content: space-between !important;
-  margin: 0 !important;
-  min-width: 0 !important;
-  overflow: visible !important;
-  padding: 0 !important;
-  width: auto !important;
-}
-
-.store-nav-links,
-.store-nav-links.navbar-nav {
-  align-items: center !important;
-  display: flex !important;
-  flex: 1 1 auto !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
-  gap: 12px !important;
-  justify-content: center !important;
-  margin: 0 !important;
-  min-width: 0 !important;
-  overflow: visible !important;
-  padding: 0 !important;
-  width: auto !important;
-}
-
-.store-nav-item {
-  flex: 0 1 auto !important;
-  min-width: 0 !important;
-}
-
-.nav-item-link,
-.store-nav-links .nav-link,
-.store-nav-links .nav-item-link,
-.store-care-toggle {
-  align-items: center !important;
-  border-radius: 8px !important;
-  display: inline-flex !important;
-  font-size: 15px !important;
-  font-weight: 700 !important;
-  height: 44px !important;
-  justify-content: center !important;
-  line-height: 1 !important;
-  padding: 0 12px !important;
-  white-space: nowrap !important;
-  width: auto !important;
-}
-
-.nav-label-short {
-  display: none !important;
-}
-
-.nav-label-full,
-.care-label-full {
-  display: inline !important;
-}
-
-.care-label-short {
-  display: none !important;
-}
-
-.header-right {
-  align-items: center !important;
-  display: flex !important;
-  flex: 0 0 auto !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
-  gap: 12px !important;
-  justify-content: flex-end !important;
-  margin: 0 !important;
-  min-width: 0 !important;
-  width: auto !important;
-}
-
-.store-search {
-  flex: 0 0 240px !important;
-  margin: 0 !important;
-  width: 240px !important;
-}
-
-.search-input,
-.store-search .form-control {
-  font-size: 15px !important;
-  height: 44px !important;
-  line-height: 1.2 !important;
-  min-height: 44px !important;
-  padding: 0 14px !important;
-}
-
-.cart-link,
-.cart-link.btn.btn-outline-primary {
-  flex: 0 0 auto !important;
-  font-size: 15px !important;
-  height: 46px !important;
-  min-height: 46px !important;
-  min-width: 104px !important;
-  padding: 0 14px !important;
-  white-space: nowrap !important;
-}
-
-.cart-link span {
-  flex: 0 0 auto !important;
-}
-
-.home-page .home-category-grid,
-.home-page .top-deals-grid {
-  align-items: stretch !important;
-}
-
-.home-page .home-category-grid {
-  display: grid !important;
-  gap: 24px !important;
-  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-}
-
-.home-page .top-deals-grid {
-  display: grid !important;
-  gap: 24px !important;
-  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-  margin-left: 0 !important;
-  margin-right: 0 !important;
-}
-
-.home-page .home-category-grid > .col,
-.home-page .top-deals-grid > .col {
-  display: flex !important;
-  flex: none !important;
-  max-width: none !important;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  width: 100% !important;
-}
-
-.home-page .category-link,
-.home-page .deal-link,
-.home-page .category-card,
-.home-page .deal-card {
-  display: flex !important;
-  flex: 1 1 auto !important;
-  width: 100% !important;
-}
-
-.home-page .category-card,
-.home-page .deal-card {
-  border: 1px solid #ececec !important;
-  flex-direction: column !important;
-  height: 100% !important;
-}
-
-.home-page .category-card:hover,
-.home-page .deal-card:hover {
-  border-width: 1px !important;
-}
-
-.home-page .category-card img,
-.home-page .home-category-grid .category-card img,
-.home-page .deal-card img,
-.home-page .top-deals-section .deal-card img {
-  aspect-ratio: 1 / 1 !important;
-  background-color: #fff8fb !important;
+/* Final Home hero carousel layout: full-width Bootstrap hero with safe overlay. */
+.home-page #fashionCarousel.carousel {
+  background-color: #fff2f7 !important;
   display: block !important;
-  height: auto !important;
   margin: 0 !important;
-  max-height: none !important;
   max-width: none !important;
-  object-fit: contain !important;
-  object-position: center center !important;
-  padding: 14px !important;
+  overflow: hidden !important;
+  position: relative !important;
   width: 100% !important;
 }
 
-.home-page .category-card .card-body,
-.home-page .deal-card .card-body {
+.home-page #fashionCarousel .carousel-inner,
+.home-page #fashionCarousel .carousel-item {
+  height: 480px !important;
+  min-height: 0 !important;
+  width: 100% !important;
+}
+
+.home-page #fashionCarousel .carousel-hero-img,
+.home-page #fashionCarousel .carousel-hero-img.d-block.w-100 {
+  display: block !important;
+  height: 100% !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  opacity: 0.92 !important;
+  width: 100% !important;
+}
+
+.home-page #fashionCarousel .custom-caption.carousel-caption {
+  bottom: auto !important;
+  left: 8% !important;
+  max-width: min(520px, 84%) !important;
+  padding: 0 !important;
+  right: auto !important;
+  text-align: left !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: auto !important;
+  z-index: 2 !important;
+}
+
+.home-page #fashionCarousel .label-box {
+  margin-bottom: 16px !important;
+}
+
+.home-page #fashionCarousel .custom-caption h1 {
+  font-size: 52px !important;
+  line-height: 1.1 !important;
+  margin-bottom: 14px !important;
+}
+
+.home-page #fashionCarousel .custom-caption p {
+  font-size: 19px !important;
+  line-height: 1.5 !important;
+  margin-bottom: 22px !important;
+}
+
+.home-page #fashionCarousel .shop-btn {
   align-items: center !important;
-  display: flex !important;
-  flex: 1 1 auto !important;
-  flex-direction: column !important;
+  display: inline-flex !important;
   justify-content: center !important;
-  text-align: center !important;
 }
 
-@media only screen and (max-width: 1199px) and (min-width: 992px) {
-  .store-navbar.navbar > .container-fluid,
-  .header-inner {
-    gap: 10px !important;
-    padding: 0 18px !important;
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .home-page #fashionCarousel .carousel-inner,
+  .home-page #fashionCarousel .carousel-item {
+    height: 410px !important;
   }
 
-  .brand-mark {
-    height: 46px !important;
-    width: 46px !important;
+  .home-page #fashionCarousel .custom-caption.carousel-caption {
+    left: 7% !important;
+    max-width: min(460px, 84%) !important;
   }
 
-  .brand-text {
-    display: none !important;
+  .home-page #fashionCarousel .custom-caption h1 {
+    font-size: 42px !important;
   }
 
-  .store-nav-links,
-  .store-nav-links.navbar-nav {
-    gap: 6px !important;
-  }
-
-  .nav-item-link,
-  .store-nav-links .nav-link,
-  .store-nav-links .nav-item-link,
-  .store-care-toggle {
-    font-size: 14px !important;
-    height: 42px !important;
-    padding: 0 9px !important;
-  }
-
-  .store-search {
-    flex-basis: 190px !important;
-    width: 190px !important;
-  }
-
-  .cart-link,
-  .cart-link.btn.btn-outline-primary {
-    min-width: 94px !important;
-  }
-}
-
-@media only screen and (max-width: 991px) {
-  :root {
-    --sale-bar-height: 34px;
-    --header-height: 62px;
-  }
-
-  .top-discount {
-    font-size: 13px !important;
-    padding: 5px 10px !important;
-  }
-
-  .store-navbar.navbar > .container-fluid,
-  .header-inner {
-    flex-direction: row !important;
-    gap: 7px !important;
-    justify-content: flex-start !important;
-    padding: 0 12px !important;
-  }
-
-  .brand-mark {
-    height: 42px !important;
-    width: 42px !important;
+  .home-page #fashionCarousel .custom-caption p {
     font-size: 17px !important;
-  }
-
-  .brand-text {
-    display: none !important;
-  }
-
-  .store-navbar-collapse.collapse:not(.show),
-  .store-navbar-collapse.collapse.show,
-  .store-navbar-collapse.collapsing,
-  .store-navbar-collapse {
-    gap: 7px !important;
-  }
-
-  .store-nav-links,
-  .store-nav-links.navbar-nav {
-    gap: 6px !important;
-    justify-content: space-between !important;
-  }
-
-  .nav-label-full,
-  .care-label-full,
-  .care-label-short {
-    display: none !important;
-  }
-
-  .nav-label-short {
-    display: inline !important;
-  }
-
-  .store-care-toggle::before {
-    content: "Care";
-  }
-
-  .nav-item-link,
-  .store-nav-links .nav-link,
-  .store-nav-links .nav-item-link,
-  .store-care-toggle {
-    font-size: 13px !important;
-    height: 38px !important;
-    padding: 0 8px !important;
-  }
-
-  .header-right {
-    gap: 7px !important;
-  }
-
-  .store-search {
-    flex-basis: 160px !important;
-    width: 160px !important;
-  }
-
-  .search-input,
-  .store-search .form-control {
-    font-size: 13px !important;
-    height: 38px !important;
-    min-height: 38px !important;
-    padding: 0 10px !important;
-  }
-
-  .cart-link,
-  .cart-link.btn.btn-outline-primary {
-    font-size: 13px !important;
-    height: 40px !important;
-    min-height: 40px !important;
-    min-width: 86px !important;
-    padding: 0 9px !important;
-  }
-
-  .cart-link span {
-    height: 20px !important;
-    min-width: 20px !important;
-    width: 20px !important;
-  }
-}
-
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-  :root {
-    --sale-bar-height: 32px;
-    --header-height: 56px;
-  }
-
-  .top-discount {
-    font-size: 12px !important;
-  }
-
-  .store-navbar.navbar > .container-fluid,
-  .header-inner {
-    flex-direction: row !important;
-    gap: 6px !important;
-    justify-content: flex-start !important;
-    padding: 0 7px !important;
-  }
-
-  .brand-mark {
-    height: 36px !important;
-    width: 36px !important;
-    font-size: 16px !important;
-  }
-
-  .store-navbar-collapse.collapse:not(.show),
-  .store-navbar-collapse.collapse.show,
-  .store-navbar-collapse.collapsing,
-  .store-navbar-collapse {
-    gap: 5px !important;
-  }
-
-  .store-nav-links,
-  .store-nav-links.navbar-nav {
-    gap: 4px !important;
-    justify-content: space-between !important;
-  }
-
-  .nav-item-link,
-  .store-nav-links .nav-link,
-  .store-nav-links .nav-item-link,
-  .store-care-toggle {
-    font-size: 11px !important;
-    height: 34px !important;
-    padding: 0 5px !important;
-  }
-
-  .header-right {
-    gap: 5px !important;
-  }
-
-  .store-search {
-    flex-basis: 106px !important;
-    width: 106px !important;
-  }
-
-  .search-input,
-  .store-search .form-control {
-    font-size: 11px !important;
-    height: 34px !important;
-    min-height: 34px !important;
-    padding: 0 7px !important;
-  }
-
-  .cart-link,
-  .cart-link.btn.btn-outline-primary {
-    font-size: 11px !important;
-    height: 36px !important;
-    min-height: 36px !important;
-    min-width: 68px !important;
-    padding: 0 6px !important;
-  }
-
-  .cart-link span {
-    height: 18px !important;
-    min-width: 18px !important;
-    width: 18px !important;
-  }
-}
-
-@media only screen and (max-width: 575px) {
-  :root {
-    --sale-bar-height: 28px;
-    --header-height: 52px;
-  }
-
-  .top-discount {
-    font-size: 10px !important;
-    padding: 4px 6px !important;
-  }
-
-  .store-navbar.navbar > .container-fluid,
-  .header-inner {
-    flex-direction: row !important;
-    gap: 3px !important;
-    justify-content: flex-start !important;
-    padding: 0 3px !important;
-  }
-
-  .store-brand {
-    flex: 0 0 auto !important;
-    gap: 0 !important;
-    justify-content: flex-start !important;
-    width: auto !important;
-  }
-
-  .brand-mark {
-    height: 32px !important;
-    width: 32px !important;
-    font-size: 14px !important;
-  }
-
-  .store-navbar-collapse.collapse:not(.show),
-  .store-navbar-collapse.collapse.show,
-  .store-navbar-collapse.collapsing,
-  .store-navbar-collapse {
-    gap: 3px !important;
-  }
-
-  .store-nav-links,
-  .store-nav-links.navbar-nav {
-    gap: 2px !important;
-    justify-content: space-between !important;
-  }
-
-  .nav-item-link,
-  .store-nav-links .nav-link,
-  .store-nav-links .nav-item-link,
-  .store-care-toggle {
-    border-radius: 5px !important;
-    font-size: 9.4px !important;
-    height: 32px !important;
-    min-height: 32px !important;
-    padding: 0 3.5px !important;
-  }
-
-  .store-navbar .dropdown-menu,
-  .store-dropdown-menu {
-    top: 32px !important;
-  }
-
-  .header-right {
-    gap: 3px !important;
-  }
-
-  .store-search {
-    flex-basis: 62px !important;
-    width: 62px !important;
-  }
-
-  .search-input,
-  .store-search .form-control {
-    font-size: 9.5px !important;
-    height: 32px !important;
-    min-height: 32px !important;
-    padding: 0 5px !important;
-  }
-
-  .cart-link,
-  .cart-link.btn.btn-outline-primary {
-    font-size: 9.5px !important;
-    gap: 3px !important;
-    height: 34px !important;
-    min-height: 34px !important;
-    min-width: 56px !important;
-    padding: 0 4px !important;
-    width: 56px !important;
-  }
-
-  .cart-link::before {
-    content: none !important;
-    display: none !important;
-  }
-
-  .cart-link span {
-    font-size: 9.5px !important;
-    height: 16px !important;
-    min-width: 16px !important;
-    padding: 0 !important;
-    width: 16px !important;
-  }
-
-  .home-page .category-card img,
-  .home-page .home-category-grid .category-card img,
-  .home-page .deal-card img,
-  .home-page .top-deals-section .deal-card img {
-    padding: 8px !important;
-  }
-}
-
-@media only screen and (min-width: 400px) and (max-width: 575px) {
-  :root {
-    --header-height: 54px;
-  }
-
-  .store-navbar.navbar > .container-fluid,
-  .header-inner {
-    gap: 4px !important;
-    padding: 0 5px !important;
-  }
-
-  .brand-mark {
-    height: 36px !important;
-    width: 36px !important;
-    font-size: 16px !important;
-  }
-
-  .store-navbar-collapse.collapse:not(.show),
-  .store-navbar-collapse.collapse.show,
-  .store-navbar-collapse.collapsing,
-  .store-navbar-collapse {
-    gap: 4px !important;
-  }
-
-  .store-nav-links,
-  .store-nav-links.navbar-nav {
-    gap: 3px !important;
-  }
-
-  .nav-item-link,
-  .store-nav-links .nav-link,
-  .store-nav-links .nav-item-link,
-  .store-care-toggle {
-    font-size: 10.2px !important;
-    height: 34px !important;
-    min-height: 34px !important;
-    padding: 0 4.5px !important;
-  }
-
-  .store-search {
-    flex-basis: 82px !important;
-    width: 82px !important;
-  }
-
-  .search-input,
-  .store-search .form-control {
-    font-size: 10.5px !important;
-    height: 34px !important;
-    min-height: 34px !important;
-    padding: 0 6px !important;
-  }
-
-  .cart-link,
-  .cart-link.btn.btn-outline-primary {
-    font-size: 10.5px !important;
-    height: 36px !important;
-    min-height: 36px !important;
-    min-width: 64px !important;
-    width: 64px !important;
-  }
-
-  .cart-link span {
-    font-size: 9.5px !important;
-    height: 17px !important;
-    min-width: 17px !important;
-    width: 17px !important;
   }
 }
 
 @media only screen and (max-width: 767px) {
-  .home-page .home-category-grid {
-    gap: 16px !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  .home-page #fashionCarousel .carousel-inner,
+  .home-page #fashionCarousel .carousel-item {
+    height: 340px !important;
+    min-height: 0 !important;
   }
 
-  .home-page .top-deals-grid {
-    gap: 18px !important;
-    grid-template-columns: 1fr !important;
-  }
-}
-/* FINAL Size Guide: no horizontal scroll */
-.size-guide-page,
-.size-guide-page * {
-  box-sizing: border-box;
-}
-
-.size-guide-page {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-.size-guide-page .container {
-  width: 100%;
-  max-width: 960px;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.size-guide-page-box {
-  width: 100%;
-  max-width: 760px;
-  margin-left: auto;
-  margin-right: auto;
-  overflow: hidden;
-}
-
-.size-guide-table-wrap {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-  border: 1px solid #f0c9d8;
-  border-radius: 14px;
-  background-color: #ffffff;
-  padding: 4px;
-  margin-bottom: 22px;
-}
-
-.size-guide-table {
-  width: 100%;
-  min-width: 0 !important;
-  table-layout: fixed;
-  margin-bottom: 0;
-}
-
-.size-guide-table th,
-.size-guide-table td {
-  white-space: normal !important;
-  overflow-wrap: anywhere;
-  word-break: normal;
-  text-align: center;
-  vertical-align: middle;
-  padding: 9px 4px;
-  font-size: 13px;
-  line-height: 1.25;
-}
-
-@media only screen and (max-width: 575px) {
-  .size-guide-page .page-section {
-    padding-top: 22px;
-    padding-bottom: 28px;
+  .home-page #fashionCarousel .custom-caption.carousel-caption {
+    left: 24px !important;
+    max-width: calc(100% - 48px) !important;
+    right: 24px !important;
+    top: 52% !important;
   }
 
-  .size-guide-page-box {
-    padding: 16px 8px;
-    border-radius: 14px;
+  .home-page #fashionCarousel .label-box {
+    margin-bottom: 10px !important;
+    padding: 8px 14px !important;
   }
 
-  .size-guide-title {
-    font-size: 28px;
-    line-height: 1.15;
-    margin-bottom: 10px;
+  .home-page #fashionCarousel .custom-caption h1 {
+    font-size: 30px !important;
+    line-height: 1.12 !important;
+    margin-bottom: 10px !important;
   }
 
-  .size-guide-page .care-intro {
-    font-size: 12px;
-    line-height: 1.45;
-    margin-bottom: 14px;
+  .home-page #fashionCarousel .custom-caption p {
+    font-size: 15px !important;
+    line-height: 1.4 !important;
+    margin-bottom: 16px !important;
   }
 
-  .size-guide-table th,
-  .size-guide-table td {
-    font-size: 10.5px;
-    padding: 7px 2px;
-  }
-
-  .care-mini-card {
-    padding: 14px 10px;
-  }
-
-  .care-mini-card h3 {
-    font-size: 16px;
-  }
-
-  .care-mini-card p {
-    font-size: 12px;
-    line-height: 1.5;
+  .home-page #fashionCarousel .shop-btn {
+    min-height: 40px !important;
+    padding: 9px 18px !important;
   }
 }
 
-@media only screen and (max-width: 360px) {
-  .size-guide-page .container {
-    padding-left: 6px;
-    padding-right: 6px;
+@media only screen and (max-width: 380px) {
+  .home-page #fashionCarousel .carousel-inner,
+  .home-page #fashionCarousel .carousel-item {
+    height: 320px !important;
   }
 
-  .size-guide-page-box {
-    padding: 14px 6px;
+  .home-page #fashionCarousel .custom-caption.carousel-caption {
+    left: 18px !important;
+    max-width: calc(100% - 36px) !important;
+    right: 18px !important;
   }
 
-  .size-guide-table th,
-  .size-guide-table td {
-    font-size: 9.5px;
-    padding: 6px 1px;
-  }
-}
-.customer-care-page .btn-close,
-.customer-care-page .btn-close,
-.customer-care-page .close-btn,
-.care-page .btn-close,
-.care-page .close-btn {
-  display: block;
-  margin-left: auto;
-  margin-right: 0;
-}
-
-.store-nav-item.dropdown {
-  position: relative;
-}
-
-.store-dropdown-menu {
-  left: auto !important;
-  right: 0 !important;
-  min-width: 150px;
-}
-
-.dropdown-close-row {
-  display: flex;
-  justify-content: flex-end;
-  padding: 4px 6px 0 6px;
-}
-
-.dropdown-close-button {
-  margin-left: auto;
-  margin-right: 0;
-  width: 24px;
-  height: 24px;
-  border: 1px solid #333;
-  background-color: white;
-  color: #111;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  line-height: 1;
-}
-/* =========================================================
-   FINAL ABOUT PAGE RESPONSIVE FIX
-   For small laptops, large laptops, tablets, and desktop
-========================================================= */
-
-.about-page {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-.about-page .container {
-  width: 100%;
-  max-width: 1180px;
-}
-
-.about-text-box {
-  width: 100%;
-  max-width: 100%;
-  overflow-wrap: break-word;
-  word-break: normal;
-}
-
-.about-text-box h1 {
-  font-size: clamp(36px, 4vw, 56px);
-  line-height: 1.15;
-}
-
-.about-text-box p {
-  font-size: clamp(17px, 1.55vw, 24px);
-  line-height: 1.65;
-}
-
-.about-image-box {
-  width: 100%;
-  max-width: 100%;
-  min-height: 260px;
-  background-size: contain;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-/* Small laptops: 992px - 1199px */
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .about-page .container {
-    max-width: 960px;
+  .home-page #fashionCarousel .custom-caption h1 {
+    font-size: 27px !important;
   }
 
-  .about-text-box {
-    padding: 14px 8px;
-  }
-
-  .about-text-box h1 {
-    font-size: 44px;
-  }
-
-  .about-text-box p {
-    font-size: 19px;
-    line-height: 1.6;
-  }
-
-  .about-image-box {
-    height: 280px;
-  }
-
-  .story-box p {
-    font-size: 19px;
-    line-height: 1.7;
-  }
-
-  .about-card-title,
-  .choose-box h4 {
-    font-size: 24px;
-  }
-
-  .about-card p,
-  .choose-box p,
-  .team-body p {
-    font-size: 16px;
-    line-height: 1.6;
-  }
-}
-
-/* Large laptops / normal desktop: 1200px - 1399px */
-@media only screen and (min-width: 1200px) and (max-width: 1399px) {
-  .about-page .container {
-    max-width: 1140px;
-  }
-
-  .about-text-box h1 {
-    font-size: 52px;
-  }
-
-  .about-text-box p {
-    font-size: 22px;
-    line-height: 1.65;
-  }
-
-  .about-image-box {
-    height: 310px;
-  }
-}
-
-/* Very large screens */
-@media only screen and (min-width: 1400px) {
-  .about-page .container {
-    max-width: 1240px;
-  }
-
-  .about-text-box h1 {
-    font-size: 56px;
-  }
-
-  .about-text-box p {
-    font-size: 24px;
-    line-height: 1.75;
-  }
-
-  .about-image-box {
-    height: 340px;
-  }
-}
-
-/* Tablets / iPad */
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .about-text-box {
-    padding: 12px 6px;
-  }
-
-  .about-text-box h1 {
-    font-size: 40px;
-    text-align: left;
-  }
-
-  .about-text-box p {
-    font-size: 18px;
-    line-height: 1.6;
-  }
-
-  .about-image-box {
-    height: 260px;
-  }
-
-  .story-box {
-    padding: 24px 22px;
-  }
-
-  .story-box p {
-    font-size: 18px;
-    line-height: 1.7;
+  .home-page #fashionCarousel .custom-caption p {
+    font-size: 14px !important;
   }
 }
